@@ -1,2 +1,2 @@
 # web_portal
-Web Portal
+Django Web base Portal
