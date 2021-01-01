@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from web_portal.views.mainpage_view import MainpageViews
+from web_portal.views.homepage_view import HomepageView
 
 urlpatterns = [
-    path('portal/', MainpageViews.as_view()),
+    path('home/', HomepageView.as_view()),
 ]

@@ -16,7 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+import ctrl_web_portal.views as mainview
+
 urlpatterns = [
+    path('404/', mainview.AboutView.as_view(), name='home'),
     path('admin/', admin.site.urls),
+
+    # web_portal urls
     path('', include('web_portal.urls.urls')),
 ]
