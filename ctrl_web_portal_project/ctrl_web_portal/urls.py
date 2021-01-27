@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 import ctrl_web_portal.views as mainview
 
 urlpatterns = [
-    path('404/', mainview.AboutView.as_view(), name='home'),
     path('admin/', admin.site.urls),
 
     # web_portal urls
     path('', include('web_portal.urls.urls')),
+
+    # Api urls
+    path(r'api/', include('web_portal.urls.urls_api', namespace='api')),
+    path(r'api/', include('web_portal.urls.urls_api', namespace='api_v1')),
 ]
