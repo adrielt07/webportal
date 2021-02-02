@@ -13,4 +13,4 @@ class AccountModel(models.Model):
         return f"{self.firstname} + {self.lastname} + {self.id}"
 
     class Meta:
-        db_table = "Accounts_db"
+        db_table = "accounts_db"
