@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from web_portal.models.address_models import AddressModel
+from web_portal.models.location_models import AddressModel
 from phonenumber_field.modelfields import PhoneNumberField
 
 class CompanyModel(models.Model):

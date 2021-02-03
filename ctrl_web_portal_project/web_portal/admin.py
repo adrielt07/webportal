@@ -1,9 +1,11 @@
 from django.contrib import admin
 from web_portal.models.account_models import AccountModel
 from web_portal.models.company_models import CompanyModel
-from web_portal.models.address_models import AddressModel
-from web_portal.models.country_models import CountryModel
-from web_portal.models.state_models import StateModel
+from web_portal.models.location_models import (
+    CountryModel,
+    StateModel,
+    AddressModel
+    )
 
 
 # Register your models here.
