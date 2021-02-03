@@ -13,7 +13,7 @@ class AccountModelAdmin(admin.ModelAdmin):
     list_display = ("id", "firstname", "lastname")
 
 class CompanyModelAdmin(admin.ModelAdmin):
-    list_display = ("company_name",)
+    list_display = ("id", "company_name",)
 
 class AddressModelAdmin(admin.ModelAdmin):
     list_display = ("street_address", "state", "country", )

@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 class CountryModel(models.Model):
+    id = models.AutoField(primary_key=True)
     country_name = models.CharField(max_length=64)
 
     def __str__(self):
@@ -12,6 +13,7 @@ class CountryModel(models.Model):
 
 
 class StateModel(models.Model):
+    id = models.AutoField(primary_key=True)
     state_name = models.CharField(max_length=64)
     short_name = models.CharField(max_length=4)
     country = models.ForeignKey(CountryModel, on_delete=models.CASCADE)
@@ -24,6 +26,7 @@ class StateModel(models.Model):
 
 
 class AddressModel(models.Model):
+    id = models.AutoField(primary_key=True)
     street_address = models.CharField(max_length=64)
     zip_code = models.CharField(max_length=32)
     country = models.ForeignKey(CountryModel, on_delete=models.CASCADE)
