@@ -14,7 +14,7 @@ class CompanyModelAdmin(admin.ModelAdmin):
     list_display = ("company_name",)
 
 class AddressModelAdmin(admin.ModelAdmin):
-    list_display = ("street_number", "street_name", "state", "country", )
+    list_display = ("street_address", "state", "country", )
 
 class CountryModelAdmin(admin.ModelAdmin):
     list_display = ("country_name",)

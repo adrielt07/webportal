@@ -4,7 +4,7 @@ from web_portal.models.account_models import AccountModel
 from web_portal.serializers import AccountModelSerializer
 
 
-class AccountModelViewSet(viewsets.ViewSet):
+class AccountModelViewSet(viewsets.ModelViewSet):
     model = AccountModel
     queryset = AccountModel.objects.all()
     serializer_class = AccountModelSerializer
