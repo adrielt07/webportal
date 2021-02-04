@@ -8,11 +8,10 @@ app_name = 'api'
 router = DefaultRouter()
 
 #API Endpoints
-router.register(r'accounts', apis.AccountModelViewSet, 'accounts')
-router.register(r'company', apis.CompanyModelViewSet, 'company')
-
 
 urlpatterns = [
     path('', include(router.urls)),
     path('v1/', include(router.urls)),
+    path('company/', apis.CompanyModelViewSet.as_view(), name='company'),
+    path('users/', apis.AccountModelViewSet.as_view(), name='users'),
 ]

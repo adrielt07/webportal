@@ -1,4 +1,6 @@
 from rest_framework import viewsets, status, response
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
 from web_portal.models.account_models import AccountModel
 from web_portal.models.company_models import CompanyModel
@@ -8,15 +10,15 @@ from web_portal.serializers import (
 )
 
 
-class CompanyModelViewSet(viewsets.ModelViewSet):
-    model = CompanyModel
-    queryset = CompanyModel.objects.all()
-    serializer_class = CompanyModelSerializer
-    filter_fields = ["company_name", "phone", "id"]
+class CompanyModelViewSet(APIView):
+    def get(self, request, format=None):
+        company = CompanyModel.objects.all()
+        serializer = CompanyModelSerializer(company, many=True)
+        return Response(serializer.data)
 
 
-class AccountModelViewSet(viewsets.ModelViewSet):
-    model = AccountModel
-    queryset = AccountModel.objects.all()
-    serializer_class = AccountModelSerializer
-    filter_fields = ["id", "fistname", "lastname", "company"]
+class AccountModelViewSet(APIView):
+    def get(self, request, format=None):
+        user_accounts = AccountModel.objects.all()
+        serializer = AccountModelSerializer(user_accounts, many=True)
+        return Response(serializer.data)
