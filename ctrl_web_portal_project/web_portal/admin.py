@@ -10,18 +10,23 @@ from web_portal.models.location_models import (
 
 # Register your models here.
 class AccountModelAdmin(admin.ModelAdmin):
+    readonly_fields = ("created_at", "updated_at")
     list_display = ("id", "firstname", "lastname")
 
 class CompanyModelAdmin(admin.ModelAdmin):
+    readonly_fields = ("created_at", "updated_at")
     list_display = ("id", "company_name",)
 
 class AddressModelAdmin(admin.ModelAdmin):
+    readonly_fields = ("created_at", "updated_at")
     list_display = ("street_address", "state", "country", )
 
 class CountryModelAdmin(admin.ModelAdmin):
+    readonly_fields = ("created_at", "updated_at")
     list_display = ("country_name",)
 
 class StateModelAdmin(admin.ModelAdmin):
+    readonly_fields = ("created_at", "updated_at")
     list_display = ("state_name",)
 
 admin.site.register(AccountModel, AccountModelAdmin)
