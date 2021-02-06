@@ -11,7 +11,6 @@ class CompanyModelSerializer(serializers.ModelSerializer):
 
 
 class AccountModelSerializer(serializers.ModelSerializer):
-    company = CompanyModelSerializer(read_only=True)
     class Meta:
         model = AccountModel
         fields = ["id", "firstname", "lastname", "company"]

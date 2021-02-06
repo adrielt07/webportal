@@ -22,3 +22,12 @@ class AccountModelViewSet(APIView):
         user_accounts = AccountModel.objects.all()
         serializer = AccountModelSerializer(user_accounts, many=True)
         return Response(serializer.data)
+
+    def post(self, request):
+        user_accounts = AccountModel.objects.all()
+        serializer = AccountModelSerializer(data=request.data)
+        print(serializer)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
