@@ -6,7 +6,11 @@ from web_portal.models.company_models import CompanyModel
 class AccountModel(models.Model):
     firstname = models.CharField(max_length=64)
     lastname = models.CharField(max_length=64)
-    company = models.ForeignKey(CompanyModel, on_delete=models.CASCADE)
+    company = models.ForeignKey(
+            CompanyModel,
+            on_delete=models.CASCADE,
+            related_name='users'
+        )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

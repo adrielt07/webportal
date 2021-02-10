@@ -7,6 +7,8 @@ from web_portal.models.company_models import CompanyModel
 from web_portal.serializers import (
     AccountModelSerializer,
     CompanyModelSerializer,
+    CompanyDetailSerializer,
+    AccountDetailSerializer,
 )
 
 
@@ -17,11 +19,26 @@ class CompanyModelViewSet(APIView):
         return Response(serializer.data)
 
 
+class CompanyDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return CompanyModel.objects.get(pk=pk)
+        except Snippet.DoesNotExist:
+            raise Http404
+
+
+    def get(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = CompanyDetailSerializer(snippet)
+        return Response(serializer.data)
+
+
 class AccountModelViewSet(APIView):
     def get(self, request, format=None):
         user_accounts = AccountModel.objects.all()
         serializer = AccountModelSerializer(user_accounts, many=True)
         return Response(serializer.data)
+
 
     def post(self, request):
         user_accounts = AccountModel.objects.all()
@@ -31,3 +48,20 @@ class AccountModelViewSet(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class AccountDetail(APIView):
+    """
+    Retrieve, update or delete a snippet instance.
+    """
+    def get_object(self, pk):
+        try:
+            return AccountModel.objects.get(pk=pk)
+        except Snippet.DoesNotExist:
+            raise Http404
+
+
+    def get(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = AccountDetailSerializer(snippet)
+        return Response(serializer.data)

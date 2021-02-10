@@ -5,7 +5,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class CompanyModel(models.Model):
     company_name = models.CharField(max_length=64)
-    address = models.ForeignKey(AddressModel, on_delete=models.CASCADE)
+    address = models.ForeignKey(
+            AddressModel,
+            on_delete=models.CASCADE,
+            related_name="address"
+        )
     phone = PhoneNumberField(null=False, blank=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
