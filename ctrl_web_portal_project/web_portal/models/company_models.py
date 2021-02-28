@@ -1,16 +1,47 @@
 from django.db import models
 from django.urls import reverse
-from web_portal.models.location_models import AddressModel
+from web_portal.models.location_models import LocationModel
 from phonenumber_field.modelfields import PhoneNumberField
+from django_countries.fields import CountryField
+
 
 class CompanyModel(models.Model):
-    company_name = models.CharField(max_length=64)
-    address = models.ForeignKey(
-            AddressModel,
-            on_delete=models.CASCADE,
-            related_name="address"
-        )
-    phone = PhoneNumberField(null=False, blank=False, unique=True)
+    company_name = models.CharField(max_length=1024)
+    phone = PhoneNumberField(
+        null=False,
+        blank=False,
+        unique=True
+    )
+    address = models.CharField(
+        "Address line 1",
+        max_length=1024, 
+        default=""
+    )
+    city = models.CharField(
+        "City",
+        max_length=1024,
+        default=""
+    )
+    state = models.CharField(
+        "State",
+        max_length=1024,
+        default=""
+    )
+    zip_code = models.CharField(
+        "ZIP / Postal code", 
+        max_length=12, 
+        default=""
+    )
+    country = CountryField(
+        blank_label='(select country)',
+        default=""
+    )
+
+    locations = models.ForeignKey(
+        LocationModel,
+        on_delete=models.CASCADE,
+        null=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -19,6 +19,15 @@ class CompanyModelViewSet(APIView):
         return Response(serializer.data)
 
 
+    def post(self, request):
+        user_accounts = CompanyModel.objects.all()
+        serializer = CompanyModelSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class CompanyDetail(APIView):
     def get_object(self, pk):
         try:
@@ -43,7 +52,6 @@ class AccountModelViewSet(APIView):
     def post(self, request):
         user_accounts = AccountModel.objects.all()
         serializer = AccountModelSerializer(data=request.data)
-        print(serializer)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

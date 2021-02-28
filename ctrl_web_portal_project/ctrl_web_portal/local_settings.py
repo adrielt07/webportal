@@ -84,22 +84,10 @@ WSGI_APPLICATION = 'ctrl_web_portal.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-"""
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ.get('DB_HOST'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS'),
     }
 }
 
@@ -138,12 +126,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATIC_ROOT = os.path.join(str(BASE_DIR), 'staticroot')
 STATIC_URL = '/static/static/'
 MEDIA_URL = '/static/media/'
 
 MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
 
+STATICFILES_DIRS = (
+    os.path.join(str(BASE_DIR), 'static'),
+)
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',

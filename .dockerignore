@@ -1,0 +1,9 @@
+.gitignore
+README.md
+.git
+docker-compose.yaml
+vol/
+deploy/
+.venv
+virtualenv/
+.virtualenv/
