@@ -26,15 +26,16 @@ class UserManager(BaseUserManager):
 
 
 class AccountModel(AbstractBaseUser, PermissionsMixin):
-    firstname = models.CharField(max_length=64)
-    lastname = models.CharField(max_length=64)
+    firstname = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255)
     username = None
     password = models.CharField(
-        max_length=50,
+        max_length=255,
         default='root123'
     )
     email = models.EmailField(
         'email address',
+        max_length=255,
         unique=True
     )
     company = models.ForeignKey(
