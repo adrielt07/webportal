@@ -7,7 +7,7 @@ from web_portal.models.location_models import LocationModel
 class CompanyModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = CompanyModel
-        fields = ["id", "company_name", "phone"]
+        fields = ["id", "company_name", "phone", "locations",]
         depth = 0
 
 

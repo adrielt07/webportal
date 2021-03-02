@@ -26,3 +26,5 @@ migrations_dev: # Run migrations locally
 dev: ## Run application locally. No container
 	./ctrl_web_portal_project/manage.py runserver --settings=ctrl_web_portal.local_settings
 
+createsuperuser:
+	./ctrl_web_portal_project/manage.py createsuperuser --settings=ctrl_web_portal.local_settings
