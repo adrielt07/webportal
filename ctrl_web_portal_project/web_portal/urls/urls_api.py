@@ -16,4 +16,5 @@ urlpatterns = [
     path('company/<int:pk>', apis.CompanyDetail.as_view(), name='company_detail'),
     path('users/', apis.AccountModelViewSet.as_view(), name='users'),
     path('users/<int:pk>/', apis.AccountDetail.as_view(), name='users_detail'),
+    path('locations/', apis.LocationModelViewSet.as_view(), name='locations'),
 ]
