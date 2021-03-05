@@ -41,6 +41,14 @@ class CompanyDetail(APIView):
         serializer = CompanyDetailSerializer(snippet)
         return Response(serializer.data)
 
+    def post(self, request):
+        company_data = CompanyModel.objects.all()
+        serializer = CompanyModelSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class AccountModelViewSet(APIView):
     def get(self, request, format=None):
