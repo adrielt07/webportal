@@ -49,6 +49,23 @@ class CompanyDetailSerializer(serializers.ModelSerializer):
             "city",
             "state",
             "zip_code",
-            "country"
+            "country",
+            "locations"
+        ]
+        depth = 0
+
+
+class LocationModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LocationModel
+        fields = [
+            "id",
+            "name",
+            "address",
+            "city",
+            "zip_code",
+            "state",
+            "country",
+            "company"
         ]
         depth = 0

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'web_portal',
     'phonenumber_field',
     'django_countries',
@@ -143,3 +144,9 @@ STATICFILES_FINDERS = [
 ]
 
 AUTH_USER_MODEL = 'web_portal.AccountModel'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}

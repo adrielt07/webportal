@@ -1,18 +1,24 @@
 from rest_framework import viewsets, status, response
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
+from django.http import Http404
 from web_portal.models.account_models import AccountModel
 from web_portal.models.company_models import CompanyModel
+from web_portal.models.location_models import LocationModel
 from web_portal.serializers import (
     AccountModelSerializer,
     CompanyModelSerializer,
     CompanyDetailSerializer,
     AccountDetailSerializer,
+    LocationModelSerializer,
 )
 
 
 class CompanyModelViewSet(APIView):
+    #permission_classes = (IsAuthenticated,)
+
     def get(self, request, format=None):
         company = CompanyModel.objects.all()
         serializer = CompanyModelSerializer(company, many=True)
@@ -32,7 +38,7 @@ class CompanyDetail(APIView):
     def get_object(self, pk):
         try:
             return CompanyModel.objects.get(pk=pk)
-        except Snippet.DoesNotExist:
+        except CompanyModel.DoesNotExist:
             raise Http404
 
 
@@ -64,6 +70,12 @@ class AccountModelViewSet(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class LocationModelViewSet(APIView):
+    def get(self, request, format=None):
+        locations = LocationModel.objects.all()
+        serializer = LocationModelSerializer(locations, many=True)
+        return Response(serializer.data)
 
 
 class AccountDetail(APIView):
