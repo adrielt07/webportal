@@ -50,6 +50,7 @@ class CompanyDetail(APIView):
     def post(self, request):
         company_data = CompanyModel.objects.all()
         serializer = CompanyModelSerializer(data=request.data)
+        print(request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
