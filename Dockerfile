@@ -1,5 +1,5 @@
 FROM python:3.7-alpine
-MAINTAINER Ctrl-Layer Inc
+LABEL MAINTAINER="ctrl-layer"
 
 ENV PYTHONUNBUFFERED 1
 ENV PATH="/scripts:${PATH}"
