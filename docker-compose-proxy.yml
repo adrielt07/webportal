@@ -14,7 +14,7 @@ services:
       - DB_USER=postgres
       - DB_PASS=supersecretpassword
       - ALLOWED_HOSTS=127.0.0.1
-      - DEBUG=1
+      - DEBUG=0
     depends_on:
       - db
 

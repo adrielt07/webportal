@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'web_portal',
     'phonenumber_field',
-    'django_countries',
 ]
 
 MIDDLEWARE = [

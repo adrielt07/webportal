@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from phonenumber_field.modelfields import PhoneNumberField
-from django_countries.fields import CountryField
-#from web_portal.models.location_models import LocationModel
 
 
 class CompanyModel(models.Model):
@@ -37,8 +35,9 @@ class CompanyModel(models.Model):
         default=""
     )
 
-    country = CountryField(
-        blank_label='(select country)',
+    country = models.CharField(
+        "Country",
+        max_length=50,
         default=""
     )
 

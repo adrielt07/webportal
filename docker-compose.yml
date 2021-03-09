@@ -16,7 +16,7 @@ services:
       - DB_NAME=app
       - DB_USER=postgres
       - DB_PASS=supersecretpassword
-      - DEBUG=1
+      - DEBUG=0
       - ALLOWED_HOSTS=127.0.0.1 
     depends_on:
       - db
