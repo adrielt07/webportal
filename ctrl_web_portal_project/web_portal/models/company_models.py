@@ -12,7 +12,7 @@ class CompanyModel(models.Model):
     )
 
     address = models.CharField(
-        "Address line 1",
+        "Address",
         max_length=1024, 
         default=""
     )
@@ -30,8 +30,8 @@ class CompanyModel(models.Model):
     )
 
     zip_code = models.CharField(
-        "ZIP / Postal code", 
-        max_length=12, 
+        "ZIP_code",
+        max_length=12,
         default=""
     )
 
@@ -39,12 +39,6 @@ class CompanyModel(models.Model):
         "Country",
         max_length=50,
         default=""
-    )
-
-    locations = models.ManyToManyField(
-        'LocationModel',
-        blank=True,
-        related_name="locations",
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

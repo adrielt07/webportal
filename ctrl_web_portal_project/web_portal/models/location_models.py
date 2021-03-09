@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django_countries.fields import CountryField
 from web_portal.models.company_models import CompanyModel
 
 
@@ -30,8 +29,9 @@ class LocationModel(models.Model):
         max_length=1024, 
         default=""
     )
-    country = CountryField(
-        blank_label='(select country)',
+    country = models.CharField(
+        "Country",
+        max_length=50,
         default=""
     )
 
