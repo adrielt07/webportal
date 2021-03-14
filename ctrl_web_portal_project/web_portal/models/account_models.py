@@ -31,7 +31,7 @@ class AccountModel(AbstractBaseUser, PermissionsMixin):
     username = None
     password = models.CharField(
         max_length=255,
-        default='root123'
+        blank=False,
     )
     email = models.EmailField(
         'email address',

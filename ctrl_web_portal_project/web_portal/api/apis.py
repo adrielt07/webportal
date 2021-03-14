@@ -1,4 +1,4 @@
-from rest_framework import viewsets, status, response
+from rest_framework import viewsets, status, response, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
@@ -57,7 +57,12 @@ class CompanyDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class CreateUserView(generics.CreateAPIView):
+    """Api to create user"""
+    serializer_class = AccountModelSerializer
+
 class AccountModelViewSet(APIView):
+    serializer_class = AccountModelSerializer
     def get(self, request, format=None):
         user_accounts = AccountModel.objects.all()
         serializer = AccountModelSerializer(user_accounts, many=True)

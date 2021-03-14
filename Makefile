@@ -28,3 +28,9 @@ dev: ## Run application locally. No container
 
 createsuperuser:
 	./ctrl_web_portal_project/manage.py createsuperuser --settings=ctrl_web_portal.local_settings
+
+dev_test:
+	cd ./ctrl_web_portal_project/ && python3 manage.py test --settings=ctrl_web_portal.local_settings
+
+shell:
+	./ctrl_web_portal_project/manage.py shell --settings=ctrl_web_portal.local_settings
