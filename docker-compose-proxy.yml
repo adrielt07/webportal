@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   app:
-    image: web_portal:latest
+    image: mmantectrllayer/web_portal:latest
     build:
       context: .
     volumes:
@@ -19,7 +19,7 @@ services:
       - db
 
   proxy:
-    image: proxy:latest
+    image: mmantectrllayer/proxy:latest
     depends_on:
       - app
     ports:
