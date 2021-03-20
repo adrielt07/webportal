@@ -136,7 +136,7 @@ MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
 
 LOGIN_URL = '/login/'
-
+# Login exempt URL. The following URLs don't need authenticated users
 LOGIN_EXEMPT_URLS = (
     r'/login',
     r'logout',

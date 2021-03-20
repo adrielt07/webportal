@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'web_portal.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'ctrl_web_portal.urls'
@@ -137,7 +138,7 @@ MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
 
 LOGIN_URL = '/login/'
-
+# Login exempt URL. The following URLs don't need authenticated users
 LOGIN_EXEMPT_URLS = (
     r'/login',
     r'logout',
