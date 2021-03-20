@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'web_portal.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'ctrl_web_portal.urls'
@@ -133,6 +134,14 @@ MEDIA_URL = '/static/media/'
 
 MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
+
+LOGIN_URL = '/login/'
+
+LOGIN_EXEMPT_URLS = (
+    r'/login',
+    r'logout',
+    r'signup',
+)
 
 STATICFILES_DIRS = (
     os.path.join(str(BASE_DIR), 'static'),

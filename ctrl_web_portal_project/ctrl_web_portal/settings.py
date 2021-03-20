@@ -136,6 +136,14 @@ MEDIA_URL = '/static/media/'
 MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
 
+LOGIN_URL = '/login/'
+
+LOGIN_EXEMPT_URLS = (
+    r'/login',
+    r'logout',
+    r'signup',
+)
+
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
