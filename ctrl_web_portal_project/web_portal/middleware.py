@@ -7,6 +7,7 @@ EXEMPT_URLS = [re.compile(settings.LOGIN_URL.lstrip('/'))]
 if hasattr(settings, 'LOGIN_EXEMPT_URLS'):
     EXEMPT_URLS += [re.compile(url) for url in settings.LOGIN_EXEMPT_URLS]
 
+
 class LoginRequiredMiddleware:
 
     def __init__(self, get_response):
@@ -17,7 +18,6 @@ class LoginRequiredMiddleware:
         return response
 
     def process_view(self, request, view_func, view_args, view_kwargs):
-        print(request)
         assert hasattr(request, 'user')
         path = request.path_info
 

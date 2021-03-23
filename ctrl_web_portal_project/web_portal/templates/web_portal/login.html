@@ -47,13 +47,14 @@
 						<div class="inner">
 							<h1>Login</h1>
                             <section>
-								<form method="post" action="#">
+								<form id="login_form" method="post" action="{% url 'login' %}">
+									{% csrf_token %}
 									<div class="fields">
 										<div class="field">
-											<input type="text" name="firstname" id="firstname" placeholder="Username" />
+											<input type="text" name="email" id="email" placeholder="Email" value="{{ email }}">
                                         </div>
                                         <div class="field">
-											<input type="text" name="lastname" id="lastname" placeholder="Password" />
+											<input type="text" name="password" id="password" placeholder="Password" value="{{ password }}">
 										</div>
 									</div>
 									<ul class="actions stacked">
