@@ -33,8 +33,8 @@ class LoginpageView(View):
             return render(request, self.template_name, {'form': form})
 
 def logout(request):
-    pass
-    #django_logout(request)
+    django_logout(request)
+    return redirect('/login/')
 
 
 def RegisterPage(request):
