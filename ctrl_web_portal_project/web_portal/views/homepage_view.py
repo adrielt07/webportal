@@ -5,7 +5,11 @@ from django.views import View
 
 class HomepageView(View):
     def get(self, request):
-        return render(request, 'web_portal/home.html')
+        context = {
+            'firstname': request.user.firstname,
+            'lastname': request.user.lastname,
+        }
+        return render(request, 'web_portal/home.html', {'context': context})
 
 
 class UserCreate(View):
