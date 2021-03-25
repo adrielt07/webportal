@@ -20,7 +20,6 @@ build_local: ## Run application on container locally with Proxy and Debug off
 
 migrations_dev: # Run migrations locally
 	./ctrl_web_portal_project/manage.py makemigrations --settings=ctrl_web_portal.local_settings
-	./ctrl_web_portal_project/manage.py migrate web_portal --settings=ctrl_web_portal.local_settings
 	./ctrl_web_portal_project/manage.py migrate --settings=ctrl_web_portal.local_settings
 
 dev: ## Run application locally. No container
