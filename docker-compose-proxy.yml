@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   app:
-    image: mmantectrllayer/web_portal:latest
+    #image: mmantectrllayer/web_portal:latest
     build:
       context: .
     volumes:

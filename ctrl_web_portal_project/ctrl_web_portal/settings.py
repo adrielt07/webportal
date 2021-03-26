@@ -129,8 +129,10 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATIC_ROOT = os.path.join(str(BASE_DIR), 'staticroot')
 STATIC_URL = '/static/static/'
 MEDIA_URL = '/static/media/'
 
@@ -145,6 +147,12 @@ LOGIN_EXEMPT_URLS = (
     r'/logout/',
     r'/signup/',
     r'/register/',
+    r'/admin/',
+    r'/api/',
+)
+
+STATICFILES_DIRS = (
+    os.path.join(str(BASE_DIR), 'static'),
 )
 
 
