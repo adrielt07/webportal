@@ -1,136 +1,52 @@
+{% extends 'web_portal/base_generic.html' %}
+
 {% load static %}
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Ctrl-Layer Portal</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{% static 'web_portal/assets/css/main.css' %}" />
-		<noscript><link rel="stylesheet" href="{% static 'web_portal/assets/css/noscript.css' %}" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+{% block content %}
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="{% static 'web_portal/images/triangle_logo.jpg' %}" alt="" /></span><span class="title">Ctrl-Layer</span>
-								</a>
-
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
-
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+			<header>
+				<h1>Ctrl-Layer Webportal</h1>
+				<p>Welcome {{ context.firstname }} {{ context.lastname }}</p>
+			</header>
+			<section class="tiles">
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="generic.html">
+						<h2>Admin</h2>
+						<div class="content">
+							<p>Admin Portal</p>
 						</div>
-					</header>
-
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Account</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="account_settings.html">Account Settings</a></li>
-							<li><a href="generic.html">Change Password</a></li>
-							<li><a href="{% url 'logout' %}">Log out</a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<header>
-								<h1>Ctrl-layer at your service</h1>
-								<p>Welcome {{ context.firstname }} {{ context.lastname }}</p>
-							</header>
-							<section class="tiles">
-								<article class="style1">
-									<span class="image">
-										<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Admin</h2>
-										<div class="content">
-											<p>Admin Portal</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="{% static 'web_portal/images/pic02.jpg' %}"  alt="" />
-									</span>
-									<a href="{% url 'generic' %}">
-										<h2>Decom</h2>
-										<div class="content">
-											<p>Decommisioned Asset / Decommisioned Document</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="{% static 'web_portal/images/pic03.jpg' %}" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Contact Us</h2>
-										<div class="content">
-											<p>Create a ticket or report an issue</p>
-										</div>
-									</a>
-								</article>
-							</section>
+					</a>
+				</article>
+				<article class="style2">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic02.jpg' %}"  alt="" />
+					</span>
+					<a href="{% url 'generic' %}">
+						<h2>Decom</h2>
+						<div class="content">
+							<p>Decommisioned Asset / Decommisioned Document</p>
 						</div>
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<section>
-								<h2>Get in touch</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-										<div class="field">
-											<textarea name="message" id="message" placeholder="Message"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send" class="primary" /></li>
-									</ul>
-								</form>
-							</section>
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
-								</ul>
-							</section>
-							<ul class="copyright">
-								<li>&copy; Ctrl-Layer. All rights reserved</li>
-							</ul>
+					</a>
+				</article>
+				<article class="style3">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic03.jpg' %}" alt="" />
+					</span>
+					<a href="generic.html">
+						<h2>Contact Us</h2>
+						<div class="content">
+							<p>Create a ticket or report an issue</p>
 						</div>
-					</footer>
+					</a>
+				</article>
+			</section>
+		</div>
+	</div>
 
-			</div>
-
-		<!-- Scripts -->
-			<script src="{% static 'web_portal/assets/js/jquery.min.js' %}"></script>
-			<script src="{% static 'web_portal/assets/js/browser.min.js' %}"></script>
-			<script src="{% static 'web_portal/assets/js/breakpoints.min.js' %}"></script>
-			<script src="{% static 'web_portal/assets/js/util.js' %}"></script>
-			<script src="{% static 'web_portal/assets/js/main.js' %}"></script>
-
-	</body>
-</html>
+{% endblock %}
