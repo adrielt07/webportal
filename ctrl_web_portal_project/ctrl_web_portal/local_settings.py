@@ -61,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'web_portal.middleware.LoginRequiredMiddleware',
+    'web_portal.middleware.CtrlLayerAdminAPIAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'ctrl_web_portal.urls'

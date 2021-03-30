@@ -7,6 +7,7 @@ from web_portal.views.signup import SignUp
 
 
 urlpatterns = [
+    path('', HomepageView.as_view(), name="default_page"),
     path('home/', HomepageView.as_view(), name="home"),
     path('signup/', SignUp.as_view(), name="signup"),
     path('login/', LoginpageView.as_view(), name="login"),
