@@ -2,9 +2,9 @@ version: '3.7'
 
 services:
   app:
-    #image: mmantectrllayer/web_portal:latest
-    build:
-      context: .
+    image: mmantectrllayer/web_portal:latest
+    #build:
+    #  context: .
     volumes:
       - ./ctrl_web_portal_project:/ctrl_web_portal
       - static_data:/vol/web

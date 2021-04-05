@@ -15,7 +15,6 @@ venv:
 	@echo ""
 
 build_local: ## Run application on container locally with Proxy and Debug off
-	./scripts/build_proxy.sh 
 	docker-compose -f docker-compose-proxy.yml up
 
 migrations_dev: # Run migrations locally
