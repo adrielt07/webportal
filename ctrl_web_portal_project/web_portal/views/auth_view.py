@@ -13,7 +13,7 @@ from django.contrib.auth import login as django_login
 
 class LoginpageView(View):
     form_class = LoginForm
-    template_name = 'web_portal/login.html'
+    template_name = 'web_portal/login.html' #Login.html does not extend from base_generic.html
     def get(self, request):
         form = self.form_class().fields
         user = request.user
