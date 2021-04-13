@@ -27,9 +27,11 @@ class SignupView(View):
         NOTES:
         Future improvements if the form is invalid:
         What we want: 
-            the user should be alerted with what's wrong
+            (the user should be alerted with what's wrong
                 such as: email already taken
-                password doesn't match
+                password doesn't match) - This is DONE
+
+            Update it so it's more user friendly with red fonts (instead of black)
 
             We want a successful message that the user has been created
             Or invitation has been send toe the email address for the 
@@ -46,5 +48,6 @@ class SignupView(View):
             form.save()
             return redirect('login')
         else:
-            return render(request, 'web_portal/signup.html', context)
+            context["errors"] = form.errors
+            return render(request, 'web_portal/signup.html', {'context': context})
 
