@@ -51,6 +51,4 @@ class SignupView(View):
             return redirect('login')
         else:
             context["errors"] = form.errors
-            return HttpResponse(json.dumps(context), content_type="application/json")  
-            #return render(request, 'web_portal/signup.html', {'context': context})
-
+            return render(request, 'web_portal/signup.html', {'context': context})
