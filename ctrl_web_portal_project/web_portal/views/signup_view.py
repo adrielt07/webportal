@@ -50,5 +50,7 @@ class SignupView(View):
             form.save()
             return redirect('login')
         else:
+            cleaned_data = form.cleaned_data
+            print(form.errors)
             context["errors"] = form.errors
             return render(request, 'web_portal/signup.html', {'context': context})
