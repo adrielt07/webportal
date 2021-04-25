@@ -8,7 +8,7 @@ from web_portal.models.location_models import LocationModel
 class CompanyModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = CompanyModel
-        fields = ("id", "company_name", "phone", "address", "city", "zip_code",  "locations",)
+        fields = ("id", "company_name", "phone", "address", "city", "zip_code",)
         depth = 0
 
 
@@ -16,14 +16,6 @@ class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = LocationModel
         fields = ["id", "name",]
-        depth = 0
-
-
-class AccountDetailSerializer(serializers.ModelSerializer):
-    company = CompanyModelSerializer(read_only=True)
-    class Meta:
-        model = get_user_model()
-        fields = ("id", "firstname", "lastname", "email", "is_active", "company")
         depth = 0
 
 
@@ -37,6 +29,14 @@ class AccountModelSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         """Create a new user with encrypted password and return it"""
         return get_user_model().objects.create_user(**validated_data)
+
+
+class AccountDetailSerializer(serializers.ModelSerializer):
+    company = CompanyModelSerializer(read_only=True)
+    class Meta:
+        model = get_user_model()
+        fields = ("id", "firstname", "lastname", "email", "is_active", "company")
+        depth = 0
 
 
 class CompanyDetailSerializer(serializers.ModelSerializer):
@@ -56,7 +56,7 @@ class CompanyDetailSerializer(serializers.ModelSerializer):
             "state",
             "zip_code",
             "country",
-            "locations"
+            #"locations"
         )
         depth = 0
 

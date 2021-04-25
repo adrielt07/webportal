@@ -146,6 +146,7 @@ LOGIN_EXEMPT_URLS = (
     r'/register/',
     r'/admin/',
     r'/api/',
+    r'/company/add/', # This is to be removed. Only admin should have access to this endpoint
 )
 
 STATICFILES_DIRS = (

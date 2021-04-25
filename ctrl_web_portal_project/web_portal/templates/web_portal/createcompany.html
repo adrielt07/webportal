@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> {{ context.title }} </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'web_portal/assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'web_portal/assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+		<div id="wrapper">
+			<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<!-- Logo -->
+					<a href="index.html" class="logo">
+						<span class="symbol"><img src="{% static 'web_portal/images/triangle_logo.jpg' %}" alt="" /></span><span class="title">Ctrl-Layer</span>
+					</a>
+				</div>
+			</header>
+
+			<!-- Main -->
+			<div id="main">
+				<div class="inner">
+					<h1>Create New Company</h1>
+
+					<!-- Signup Form -->
+					<section>
+						<form id="create_company" method="post" action="{% url 'create_company' %}">
+							{% csrf_token %}
+							<div class="fields">
+								<div class="field">
+									<input required type="text" name="company_name" id="id_company_name" placeholder="company_name"/>
+								</div>
+								<div class="field half">
+									<input required type="text" name="address" id="id_address" placeholder="address"/>
+								</div>
+								<div class="field half">
+									<input type="text" name="city" id="id_city" placeholder="city"/>
+								</div>
+								<div class="field half">
+									<input type="text" name="state" id="id_state" placeholder="state"/>
+								</div>
+								<div class="field half">
+									<input type="text" name="zip_code" id="id_zip_code" placeholder="zip_code" />
+								</div>
+                                <div class="field half">
+									<input type="text" name="country" id="id_country" placeholder="country" />
+								</div>
+                                <div class="field half">
+									<input type="text" name="phone" id="id_phone" placeholder="phone" />
+								</div>
+							</div>
+							{{ context.errors }}
+							<ul class="actions">
+								<li><input type="submit" value="Create" class="primary" id="signupBtn" /></li>
+							</ul>
+						</form>
+					</section>
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; Ctrl-layer. All rights reserved</li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Scripts -->
+		<script src="{% static 'web_portal/assets/js/jquery.min.js' %}"></script>
+		<script src="{% static 'web_portal/assets/js/browser.min.js' %}"></script>
+		<script src="{% static 'web_portal/assets/js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'web_portal/assets/js/util.js' %}"></script>
+		<script src="{% static 'web_portal/assets/js/main.js' %}"></script>
+	</body>
+</html>
