@@ -14,7 +14,6 @@ if hasattr(settings, 'CTRL_ADMIN_EXEMPT_URL'):
 
 
 class LoginRequiredMiddleware:
-
     def __init__(self, get_response):
         self.get_response = get_response
 
