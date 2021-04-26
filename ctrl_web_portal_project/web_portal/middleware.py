@@ -8,6 +8,11 @@ if hasattr(settings, 'LOGIN_EXEMPT_URLS'):
     EXEMPT_URLS += [re.compile(url) for url in settings.LOGIN_EXEMPT_URLS]
 
 
+CTRL_EXEMPT_URL = [re.compile(settings.LOGIN_URL.lstrip('/'))]
+if hasattr(settings, 'CTRL_ADMIN_EXEMPT_URL'):
+    CTRL_EXEMPT_URL += [re.compile(url) for url in settings.CTRL_ADMIN_EXEMPT_URL]
+
+
 class LoginRequiredMiddleware:
 
     def __init__(self, get_response):
@@ -25,7 +30,13 @@ class LoginRequiredMiddleware:
             if not any(url.match(path) for url in EXEMPT_URLS):
                 return redirect(settings.LOGIN_URL)
 
-class CtrlLayerAdminAPIAccessMiddleware:
+
+class CtrlLayerURLAccessMiddleware:
+    """ User that doesn't have is_ctrl_admin will be redirected to the
+    home page when trying to access:
+
+    settings.CTRL_ADMIN_EXEMPT_URL in the settings
+    """
     def __init__(self, get_response):
         self.get_response = get_response
 
@@ -36,9 +47,6 @@ class CtrlLayerAdminAPIAccessMiddleware:
     def process_view(self, request, view_func, view_args, view_kwargs):
         assert hasattr(request, 'user')
         path = request.path_info
-        try:
-            if '/api/' in path:
-                if not request.user.is_ctrl_admin:
-                    return redirect('/home/')
-        except AttributeError:
-            return redirect('login')
+        if request.user.is_authenticated and not request.user.is_ctrl_admin:
+            if any(url.match(path) for url in CTRL_EXEMPT_URL):
+                return redirect('/home/')

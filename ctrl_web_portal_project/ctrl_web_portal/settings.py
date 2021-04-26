@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'web_portal.middleware.LoginRequiredMiddleware',
-    'web_portal.middleware.CtrlLayerAdminAPIAccessMiddleware',
+    'web_portal.middleware.CtrlLayerURLAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'ctrl_web_portal.urls'
@@ -148,8 +148,13 @@ LOGIN_EXEMPT_URLS = (
     r'/logout/',
     r'/signup/',
     r'/register/',
-    r'/admin/',
+)
+
+# Ctrl-admin will have access to the following URLS
+CTRL_ADMIN_EXEMPT_URL = (
     r'/api/',
+    r'/company/add/',
+    r'/admin/',
 )
 
 STATICFILES_DIRS = (
