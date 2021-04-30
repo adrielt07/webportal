@@ -10,7 +10,7 @@
 				<h1>{{ context.page_title }}</h1>
 				<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
 				{% for obj in context.company_models %}
-					<p>{{ obj }}</p>
+					<p>{{ obj.firstname }} {{ obj.lastname }}</p>
 				{% endfor %}
 			</div>
 		</div>

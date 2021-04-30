@@ -16,6 +16,4 @@ class UserlistView(View):
             'page_title': 'User list',
             'company_models': company_models,
         }
-        print(dir(company_models))
-
         return render(request, 'web_portal/userlist.html', {'context': context})
