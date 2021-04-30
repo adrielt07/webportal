@@ -45,12 +45,11 @@ class SignupView(View):
         }
         context['form'] = form
         if form.is_valid():
-            # cleaned_data = {'email': 'test@test.com', 'firstname': 'test', 'lastname': 'test', 'password': 'test', 'confirm_password': 'test'}
-            #cleaned_data = form.cleaned_data
-            form.save()
+            post = form.save(commit=False)
+            post.company_id = request.user.company_id
+            post.save()
             return redirect('login')
         else:
             cleaned_data = form.cleaned_data
-            print(form.errors)
             context["errors"] = form.errors
             return render(request, 'web_portal/signup.html', {'context': context})
