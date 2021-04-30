@@ -9,9 +9,18 @@
 			<div class="inner">
 				<h1>{{ context.page_title }}</h1>
 				<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
-				{% for obj in context.company_models %}
-					<p>{{ obj.firstname }} {{ obj.lastname }}</p>
-				{% endfor %}
+				<table>
+					<tr>
+						<th>Fistname</th>
+						<th>Lastname</th>
+					</tr>
+					{% for obj in context.company_models %}
+					<tr>
+						<td>{{ obj.firstname }}</td>
+						<td>{{ obj.lastname }}</td>
+					</tr>
+					{% endfor %}
+				</table>
 			</div>
 		</div>
 
