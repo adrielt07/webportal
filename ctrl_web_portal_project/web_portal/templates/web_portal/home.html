@@ -12,6 +12,8 @@
 				<p>Welcome {{ context.firstname }} {{ context.lastname }}</p>
 			</header>
 			<section class="tiles">
+				<!-- Admin cards -->
+				{% if context.is_ctrl_admin %}
 				<article class="style1">
 					<span class="image">
 						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
@@ -23,6 +25,9 @@
 						</div>
 					</a>
 				</article>
+				{% endif %}
+
+				<!-- Generic Cards for end users -->
 				<article class="style2">
 					<span class="image">
 						<img src="{% static 'web_portal/images/pic02.jpg' %}"  alt="" />
@@ -38,7 +43,7 @@
 					<span class="image">
 						<img src="{% static 'web_portal/images/pic03.jpg' %}" alt="" />
 					</span>
-					<a href="generic.html">
+					<a href="{% url 'generic' %}">
 						<h2>Contact Us</h2>
 						<div class="content">
 							<p>Create a ticket or report an issue</p>
