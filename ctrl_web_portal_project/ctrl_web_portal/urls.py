@@ -23,6 +23,9 @@ urlpatterns = [
     # web_portal urls
     path('', include('web_portal.urls.urls')),
 
+    # Schedule urls
+    path('', include('schedule.urls.urls')),
+
     # Api urls
     path(r'api/', include('web_portal.urls.urls_api', namespace='api')),
     path(r'api/', include('web_portal.urls.urls_api', namespace='api_v1')),

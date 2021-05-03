@@ -36,7 +36,8 @@ class AccountModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         'email address',
         max_length=255,
-        unique=True
+        unique=True,
+        null=True,
     )
     company = models.ForeignKey(
         CompanyModel,

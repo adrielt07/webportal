@@ -18,7 +18,7 @@ class CreateCompanyView(View):
             'title': 'Ctrl-layer Create Company'
         }
         context['form'] = form
-        return render(request, 'web_portal/createcompany.html', context)
+        return render(request, 'web_portal/createcompany.html', {'context': context})
 
     def post(self, request):
         """ Create compnay form Post request
