@@ -59,7 +59,7 @@ class AccountModel(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return f"{self.firstname} + {self.lastname} + {self.id}"
+        return f"{self.firstname} {self.lastname} - {self.id}"
 
     class Meta:
         db_table = "accounts_db"

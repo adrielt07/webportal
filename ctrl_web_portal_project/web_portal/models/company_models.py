@@ -46,7 +46,7 @@ class CompanyModel(models.Model):
 
 
     def __str__(self):
-        return self.company_name
+        return f"{self.company_name} - {self.id}"
 
     class Meta:
         db_table = "company_db"
