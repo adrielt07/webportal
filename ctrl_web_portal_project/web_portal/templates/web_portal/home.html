@@ -13,7 +13,7 @@
 			</header>
 			<section class="tiles">
 				<!-- Admin cards -->
-				{% if context.is_ctrl_admin %}
+				{% if context.is_ctrl_admin or context.is_client_admin %}
 				<article class="style1">
 					<span class="image">
 						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
