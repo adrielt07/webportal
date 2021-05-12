@@ -15,7 +15,7 @@
 					<header id="header">
 						<div class="inner">
 							<!-- Logo -->
-								<a href="index.html" class="logo">
+								<a href="{% url 'home' %}" class="logo">
 									<span class="symbol"><img src="{% static 'web_portal/images/triangle_logo.jpg' %}" alt="" /></span><span class="title">Ctrl-Layer</span>
 								</a>
 							<!-- Nav -->
@@ -31,7 +31,7 @@
 					<nav id="menu">
 						<h2>Account</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="{% url 'home' %}">Home</a></li>
 							<li><a href="account_settings.html">Account Settings</a></li>
 							<li><a href="generic.html">Change Password</a></li>
 							<li><a href="{% url 'logout' %}">Log out</a></li>

@@ -3327,3 +3327,10 @@ input, select, textarea {
 			}
 
 		}
+
+
+/* Custom Ctrl-layer edits */
+
+.generic_header {
+	color: #0e02be;
+}

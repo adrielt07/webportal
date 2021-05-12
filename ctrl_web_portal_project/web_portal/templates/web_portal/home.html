@@ -9,19 +9,55 @@
 		<div class="inner">
 			<header>
 				<h1>Ctrl-Layer Portal</h1>
-				<p>Welcome {{ context.firstname }} {{ context.lastname }}</p>
+				<h3>Welcome {{ context.firstname }} {{ context.lastname }}</h3>
 			</header>
 			<section class="tiles">
-				<!-- Admin cards -->
 				{% if context.is_ctrl_admin or context.is_client_admin %}
+				<!-- Admin cards for CTRL-layer -->
 				<article class="style1">
 					<span class="image">
 						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
 					</span>
-					<a href="generic.html">
-						<h2>Admin</h2>
+					<a href="#None">
+						<h2>Dev Admin</h2>
 						<div class="content">
-							<p>Admin Portal</p>
+							<p>Use to manage everything</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="#None">
+						<h2>Create New User</h2>
+						<div class="content">
+							<p>Create new user</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="#None">
+						<h2>Create New Company</h2>
+						<div class="content">
+							<p>Create New Company</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="#None">
+						<h2>Managed all Accounts</h2>
+						<div class="content">
+							<p>Create New Company</p>
 						</div>
 					</a>
 				</article>
