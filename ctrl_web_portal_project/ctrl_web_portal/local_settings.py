@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'web_portal',
     'phonenumber_field',
     'django_countries',
-    'schedule',
+    'app_schedule',
 ]
 
 MIDDLEWARE = [
