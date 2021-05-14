@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('web_portal.urls.urls')),
 
     # Schedule urls
-    path('', include('schedule.urls.urls')),
+    path('', include('app_schedule.urls.urls')),
 
     # Api urls
     path(r'api/', include('web_portal.urls.urls_api', namespace='api')),
