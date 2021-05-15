@@ -18,10 +18,10 @@
 					<span class="image">
 						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
 					</span>
-					<a href="#None">
-						<h2>Dev Admin</h2>
+					<a href="{% url 'list_company' %}">
+						<h2>Manage Company</h2>
 						<div class="content">
-							<p>Use to manage everything</p>
+							<p>List all companies</p>
 						</div>
 					</a>
 				</article>
@@ -31,9 +31,9 @@
 						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
 					</span>
 					<a href="#None">
-						<h2>Create New User</h2>
+						<h2>Dev Admin</h2>
 						<div class="content">
-							<p>Create new user</p>
+							<p>Use to manage everything</p>
 						</div>
 					</a>
 				</article>
@@ -75,6 +75,19 @@
 						</div>
 					</a>
 				</article>
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="{% url 'signup' %}">
+						<h2>Create New User</h2>
+						<div class="content">
+							<p>Create new user</p>
+						</div>
+					</a>
+				</article>
+
 				<article class="style3">
 					<span class="image">
 						<img src="{% static 'web_portal/images/pic03.jpg' %}" alt="" />

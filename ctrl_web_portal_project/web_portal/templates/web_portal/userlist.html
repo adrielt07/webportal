@@ -13,11 +13,13 @@
 					<tr>
 						<th>Fistname</th>
 						<th>Lastname</th>
+						<th>Email</th>
 					</tr>
-					{% for obj in context.company_models %}
+					{% for obj in context.account_model %}
 					<tr>
 						<td>{{ obj.firstname }}</td>
 						<td>{{ obj.lastname }}</td>
+						<td>{{ obj.email }}</td>
 					</tr>
 					{% endfor %}
 				</table>

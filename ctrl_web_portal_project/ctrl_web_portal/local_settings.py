@@ -151,6 +151,7 @@ LOGIN_EXEMPT_URLS = (
 CTRL_ADMIN_EXEMPT_URL = (
     r'/api/',
     r'/company/add/',
+    r'/company/list/',
     r'/admin/',
 )
 

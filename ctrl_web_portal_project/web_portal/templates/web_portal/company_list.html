@@ -1,0 +1,38 @@
+{% extends 'web_portal/base_generic.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>{{ context.page_title }}</h1>
+				<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+				<table>
+					<tr>
+						<th>Company ID</th>
+						<th>Company Name</th>
+						<th>Address</th>
+						<th>City</th>
+						<th>State</th>
+						<th>Country</th>
+						<th>Zip Code</th>
+					</tr>
+					{% for obj in context.company_models %}
+					<tr>
+						<td>{{ obj.id }}</td>
+						<td>{{ obj.company_name }}</td>
+						<td>{{ obj.address }}</td>
+						<td>{{ obj.city }}</td>
+						<td>{{ obj.state }}</td>
+						<td>{{ obj.country }}</td>
+						<td>{{ obj.zip_code }}</td>
+					</tr>
+					{% endfor %}
+				</table>
+				<button><a href="{% url 'create_company' %}">Add New Company</a></button>
+			</div>
+		</div>
+
+{% endblock %}
