@@ -32,3 +32,6 @@ dev_test:
 
 shell:
 	./ctrl_web_portal_project/manage.py shell --settings=ctrl_web_portal.local_settings
+
+terraform_init:
+	docker-compose -f deploy/docker-compose.yml run --rm terraform init

@@ -16,3 +16,13 @@
 
 - run `make build_local` create proxy container with staticfiles and run the app. Debug is Off
 - go to [`http://127.0.0.1:8000/`](http://127.0.0.1:8000/) staticfile should be served by proxy
+
+
+#### Running terraform
+Setup environment variables
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- region=us-west-1
+
+Run terraform init
+- docker-compose -f deploy/docker-compose.yml run --rm terraform init
