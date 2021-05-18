@@ -53,3 +53,4 @@ class SignupView(View):
             cleaned_data = form.cleaned_data
             context["errors"] = form.errors
             return render(request, 'web_portal/signup.html', {'context': context})
+

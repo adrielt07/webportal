@@ -19,6 +19,7 @@ class ScheduleView(View):
         return render(request, 'schedule/schedule_list.html', {'context': context})
 
 
+
 class CreateScheduleView(View):
 
     form_class = CreateScheduleForm

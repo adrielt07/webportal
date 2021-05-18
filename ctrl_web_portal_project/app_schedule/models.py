@@ -5,6 +5,7 @@ from web_portal.models import AccountModel
 # Create your models here.
 class ScheduleModel(models.Model):
     schedule_date = models.DateTimeField(blank=True)
+    canceled = models.BooleanField(default=False)
     company = models.ForeignKey(
         CompanyModel,
         on_delete=models.CASCADE,
