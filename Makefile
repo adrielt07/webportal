@@ -1,4 +1,6 @@
 
+workspace ?= default
+
 clean-venv:
 	rm -rf .venv
 
@@ -35,3 +37,25 @@ shell:
 
 terraform_init:
 	docker-compose -f deploy/docker-compose.yml run --rm terraform init
+
+terraform_plan:
+	docker-compose -f deploy/docker-compose.yml run --rm terraform plan
+
+terraform_apply:
+	docker-compose -f deploy/docker-compose.yml run --rm terraform apply
+
+terraform_validate:
+	docker-compose -f deploy/docker-compose.yml run --rm terraform validate
+
+terraform_fmt:
+	docker-compose -f deploy/docker-compose.yml run --rm terraform fmt
+
+terraform_workspace_list:
+	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace list
+
+terraform_create_workspace:
+	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new dev
+	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new prod
+
+terraform_change_workspace:
+	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace select ${workspace}

@@ -20,3 +20,7 @@ terraform {
 provider "aws" {
   region = "us-west-1"
 }
+
+locals {
+  prefix = "${var.prefix}-${terraform.workspace}"
+}
