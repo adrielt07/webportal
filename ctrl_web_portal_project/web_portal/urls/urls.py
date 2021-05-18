@@ -4,7 +4,7 @@ from web_portal.views.homepage_view import HomepageView
 from web_portal.views.signup_view import SignupView
 from web_portal.views.auth_view import LoginpageView, RegisterPage, logout
 from web_portal.views.generic_view import GenericpageView
-from web_portal.views.userlist_view import UserlistView
+from web_portal.views.userlist_view import UserlistView, UserDetailView
 from web_portal.views import company_view
 
 urlpatterns = [
@@ -16,5 +16,6 @@ urlpatterns = [
     path('login/', LoginpageView.as_view(), name="login"),
     path('generic/', GenericpageView.as_view(), name="generic"),
     path('users/', UserlistView.as_view(), name="userslist"),
+    path('users/detail', UserDetailView.as_view(), name="userdetail"),
     path('logout/', logout, name='logout'),
 ]

@@ -30,10 +30,10 @@ class SignupView(View):
         Future improvements if the form is invalid:
         What we want: 
             (the user should be alerted with what's wrong
-                such as: email already taken
-                password doesn't match) - This is DONE
+                such as: email already taken - This is Done by django
+                password doesn't match) - This is DONE 
 
-            Update it so it's more user friendly with red fonts (instead of black)
+            Update it so it's more user friendly with red fonts
 
             We want a successful message that the user has been created
             Or invitation has been send toe the email address for the 

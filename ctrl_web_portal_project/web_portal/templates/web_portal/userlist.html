@@ -11,12 +11,14 @@
 				<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
 				<table>
 					<tr>
+						<th>ID</th>
 						<th>Fistname</th>
 						<th>Lastname</th>
 						<th>Email</th>
 					</tr>
 					{% for obj in context.account_model %}
 					<tr>
+						<td>{{ obj.id }}</td>
 						<td>{{ obj.firstname }}</td>
 						<td>{{ obj.lastname }}</td>
 						<td>{{ obj.email }}</td>
