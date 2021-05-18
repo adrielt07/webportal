@@ -11,18 +11,21 @@
 				<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
 				<table>
 					<tr>
-						<th>ID</th>
+						<th>Date</th>
 						<th>User</th>
 						<th>Email</th>
+						<th>Ref ID</th>
 					</tr>
 					{% for obj in context.schedules %}
 					<tr>
-						<td>{{ obj.id }}</td>
+						<td>{{ obj.schedule_date }}</td>
 						<td>{{ obj.user.firstname}} {{ obj.user.lastname }}</td>
 						<td>{{ obj.user.email }}</td>
+						<td>{{ obj.id }}</td>
 					</tr>
 					{% endfor %}
 				</table>
+				<button><a href="{% url 'create_schedule' %}">Add New Schedule</a></button>
 			</div>
 		</div>
 

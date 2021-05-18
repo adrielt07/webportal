@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> {{ context.title }} </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'web_portal/assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'web_portal/assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+		<div id="wrapper">
+			<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<!-- Logo -->
+					<a href="index.html" class="logo">
+						<span class="symbol"><img src="{% static 'web_portal/images/triangle_logo.jpg' %}" alt="" /></span><span class="title">Ctrl-Layer</span>
+					</a>
+				</div>
+			</header>
+
+			<!-- Main -->
+			<div id="main">
+				<div class="inner">
+					<h1>Create New Schedule</h1>
+
+					<!-- Signup Form -->
+					<section>
+						<form id="create_schedule" method="post" action="{% url 'create_schedule' %}">
+							{% csrf_token %}
+							<div class="fields">
+								<div class="field">
+                                    <label for="schedule_date">Choose a time for your pickup:</label>
+									<input required type="text" name="schedule_date" id="id_schedule_date" placeholder="schedule_date"/>
+								</div>
+							</div>
+							{{ context.errors }}
+							<ul class="actions">
+								<li><input type="submit" value="Create" class="primary" id="signupBtn" /></li>
+							</ul>
+						</form>
+					</section>
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; Ctrl-layer. All rights reserved</li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Scripts -->
+		<script src="{% static 'web_portal/assets/js/jquery.min.js' %}"></script>
+		<script src="{% static 'web_portal/assets/js/browser.min.js' %}"></script>
+		<script src="{% static 'web_portal/assets/js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'web_portal/assets/js/util.js' %}"></script>
+		<script src="{% static 'web_portal/assets/js/main.js' %}"></script>
+	</body>
+</html>
