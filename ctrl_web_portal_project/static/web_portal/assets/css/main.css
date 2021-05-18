@@ -3334,3 +3334,15 @@ input, select, textarea {
 .generic_header {
 	color: #0e02be;
 }
+
+.form-group {
+	display: inline-block;
+}
+
+.form-group label {
+    /* Other styling... */
+    text-align: left;
+    clear: both;
+    float:left;
+    margin-right:15px;
+}

@@ -71,4 +71,3 @@ class DetailScheduleView(View):
             'page_title': 'Schedule Details',
         }
         return render(request, 'schedule/detail_schedule.html', {'context': context, 'schedule': schedule})
-
