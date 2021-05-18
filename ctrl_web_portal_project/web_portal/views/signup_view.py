@@ -48,7 +48,7 @@ class SignupView(View):
             post = form.save(commit=False)
             post.company_id = request.user.company_id
             post.save()
-            return redirect('login')
+            return redirect('userslist')
         else:
             cleaned_data = form.cleaned_data
             context["errors"] = form.errors

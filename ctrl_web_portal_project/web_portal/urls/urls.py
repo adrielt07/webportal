@@ -10,7 +10,7 @@ from web_portal.views import company_view
 urlpatterns = [
     path('', HomepageView.as_view(), name="default_page"),
     path('home/', HomepageView.as_view(), name="home"),
-    path('register/', SignupView.as_view(), name="signup"),
+    path('register/', SignupView.as_view(), name="create_user"),
     path('company/add/', company_view.CreateCompanyView.as_view(), name="create_company"),
     path('company/list/', company_view.ListCompanyView.as_view(), name="list_company"),
     path('login/', LoginpageView.as_view(), name="login"),
