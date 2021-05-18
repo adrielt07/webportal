@@ -57,3 +57,18 @@ class CreateScheduleView(View):
             cleaned_data = form.cleaned_data
             context["errors"] = form.errors
             return render(request, 'schedule/create_schedule.html', {'context': context})
+
+
+class DetailScheduleView(View):
+    
+    def get(self, request, pk):
+        """ Use to view more detail about the schedule """
+        schedule = ScheduleModel.objects.get(pk=pk)
+        context = {
+            'firstname': request.user.firstname,
+            'lastname': request.user.lastname,
+            'title': 'Ctrl-layer Schedule Detail',
+            'page_title': 'Schedule Details',
+        }
+        return render(request, 'schedule/detail_schedule.html', {'context': context, 'schedule': schedule})
+

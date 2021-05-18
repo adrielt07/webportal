@@ -1,0 +1,45 @@
+{% extends 'web_portal/base_generic.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>{{ context.page_title }}</h1>
+				<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+                <form>
+                    <label for="name">Schedule ID:</label>
+                    <input disabled type="text" id="schedule_id" name="schedule_id" value="{{ schedule.id}}">
+                    <label for="name">Requester:</label>
+                    <input disabled type="text" id="name" name="name" value="{{ schedule.user.firstname}} {{ schedule.user.lastname}}">
+                    <label for="name">Email:</label>
+                    <input disabled type="text" id="email" name="email" value="{{ schedule.user.email}}">
+                    <label for="Date">Date Schedule:</label>
+                    <input type="text" id="date" name="date" value="{{ schedule.schedule_date }}"><br>
+                    <button><a href="#">Cancel</a></button>
+                </form>
+                <!-- table view just commenting this out for now
+				<table>
+					<tr>
+						<th>Date</th>
+						<th>User</th>
+						<th>Email</th>
+						<th>Ref ID</th>
+					</tr>
+					<tr>
+						<td>{{ schedule.schedule_date }}</td>
+						<td>{{ schedule.user.firstname}} {{ schedule.user.lastname }}</td>
+						<td>{{ schedule.user.email }}</td>
+						<td>{{ schedule.id }}</td>
+					</tr>
+				</table>
+                <button><a href="#">Reschedule</a></button>
+
+				<button><a href="#">Cancel</a></button>
+                -->
+			</div>
+		</div>
+
+{% endblock %}
