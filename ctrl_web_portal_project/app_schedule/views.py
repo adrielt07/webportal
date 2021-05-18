@@ -71,3 +71,15 @@ class DetailScheduleView(View):
             'page_title': 'Schedule Details',
         }
         return render(request, 'schedule/detail_schedule.html', {'context': context, 'schedule': schedule})
+
+    def post(self, request, pk):
+        """ Deletes a schedule based of pk """
+        schedule = ScheduleModel.objects.get(pk=pk)
+        context = {
+            'firstname': request.user.firstname,
+            'lastname': request.user.lastname,
+            'title': 'Ctrl-layer Schedule Detail',
+            'page_title': 'Schedule Details',
+        }
+        schedule.delete()
+        return redirect('/schedule/')

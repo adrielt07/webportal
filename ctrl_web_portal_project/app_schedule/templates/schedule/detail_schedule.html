@@ -20,9 +20,12 @@
                     <input disabled type="text" id="email" name="email" value="{{ schedule.user.email}}">
                     <label for="date">Date Schedule:</label>
                     <input type="text" id="date" name="date" value="{{ schedule.schedule_date }}"><br>
-                    <button><a href="#">Cancel</a></button>
                 </div>
                 </form>
+				<form method="post" action="{% url 'detail_schedule' pk=schedule.id%}">
+					{% csrf_token %}
+					<input type="submit" value="Delete Schedule">
+				</form>
                 <!-- table view just commenting this out for now
 				<table>
 					<tr>
