@@ -4,7 +4,7 @@ from web_portal.views.homepage_view import HomepageView
 from web_portal.views.signup_view import SignupView
 from web_portal.views.auth_view import LoginpageView, RegisterPage, logout
 from web_portal.views.generic_view import GenericpageView
-from web_portal.views.userlist_view import UserlistView, UserDetailView
+from web_portal.views.user_view import UserlistView, UserDetailView
 from web_portal.views import company_view
 
 urlpatterns = [
