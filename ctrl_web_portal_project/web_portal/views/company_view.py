@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from web_portal.forms import CreateCompanyForm
 from web_portal.models.company_models import CompanyModel
+from web_portal.utils.aws_s3 import S3ClientWebPortal
 
 class CreateCompanyView(View):
     """ Only for ctrl-layer admin should have access
@@ -37,7 +38,12 @@ class CreateCompanyView(View):
         }
         context['form'] = form
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.save()
+            post.s3_prefix = f'{post.id}/{post.company_name}'
+            post.save()
+            s3 = S3ClientWebPortal(post.id, post.company_name)
+            s3.create_folder_in_bucket('decom')
             return redirect('list_company')
         else:
             cleaned_data = form.cleaned_data
