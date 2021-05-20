@@ -10,38 +10,19 @@
 				<h1>{{ context.page_title }}</h1>
 				<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
                 <form>
-                <div class="form-group">
-                    <label for="user_id">Ref ID:</label>
-                    <input disabled type="text" id="user_id" name="user_id" value="{{ account.id}}">
-                    <label for="email">Email:</label>
-                    <input disabled type="text" id="email" name="email" value="{{ account.email}}">
-                    <label for="fisrtname">Firstname:</label>
-                    <input disabled type="text" id="fisrtname" name="fisrtname" value="{{ account.firstname}}">
-                    <label for="lastname">Lastname:</label>
-                    <input disabled type="text" id="lastname" name="lastname" value="{{ account.lastname}}">
-                    <label for="company">Company:</label>
-                    <input disabled type="text" id="company" name="company" value="{{ account.company.company_name}}">
-                </div>
+					<div class="form-group">
+						<label for="user_id">Ref ID:</label>
+						<input disabled type="text" id="user_id" name="user_id" value="{{ account.id}}">
+						<label for="email">Email:</label>
+						<input disabled type="text" id="email" name="email" value="{{ account.email}}">
+						<label for="fisrtname">Firstname:</label>
+						<input disabled type="text" id="fisrtname" name="fisrtname" value="{{ account.firstname}}">
+						<label for="lastname">Lastname:</label>
+						<input disabled type="text" id="lastname" name="lastname" value="{{ account.lastname}}">
+						<label for="company">Company:</label>
+						<input disabled type="text" id="company" name="company" value="{{ account.company.company_name}}">
+					</div>
                 </form>
-                <!-- table view just commenting this out for now
-				<table>
-					<tr>
-						<th>Date</th>
-						<th>User</th>
-						<th>Email</th>
-						<th>Ref ID</th>
-					</tr>
-					<tr>
-						<td>{{ schedule.schedule_date }}</td>
-						<td>{{ schedule.user.firstname}} {{ schedule.user.lastname }}</td>
-						<td>{{ schedule.user.email }}</td>
-						<td>{{ schedule.id }}</td>
-					</tr>
-				</table>
-                <button><a href="#">Reschedule</a></button>
-
-				<button><a href="#">Cancel</a></button>
-                -->
 			</div>
 		</div>
 
