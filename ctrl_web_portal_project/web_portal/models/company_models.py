@@ -41,6 +41,12 @@ class CompanyModel(models.Model):
         default=""
     )
 
+    s3_prefix = models.CharField(
+        "s3_prefix",
+        max_length=1024,
+        default=""
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
