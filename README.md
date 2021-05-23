@@ -19,10 +19,11 @@
 
 
 #### Running terraform
-Setup environment variables
+Setup environment variables. Create a 'deploy/.env' file.
 - AWS_ACCESS_KEY_ID
 - AWS_SECRET_ACCESS_KEY
 - region=us-west-1
 
 Run terraform init
-- docker-compose -f deploy/docker-compose.yml run --rm terraform init
+- docker-compose -f deploy/docker-compose.yml run --rm terraform init 
+- make terraform_init

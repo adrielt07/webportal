@@ -23,10 +23,10 @@ resource "aws_internet_gateway" "main" {
 # Public Subnets - Inbound/Outbound Internet Access #
 #####################################################
 resource "aws_subnet" "public_a" {
-  cidr_block                = "10.1.1.0/24"
+  cidr_block              = "10.1.1.0/24"
   map_public_ip_on_launch = true
-  vpc_id                    = aws_vpc.main.id
-  availability_zone         = "${data.aws_region.current.name}a"
+  vpc_id                  = aws_vpc.main.id
+  availability_zone       = "${data.aws_region.current.name}a"
 
   tags = merge(
     local.common_tags,
@@ -74,10 +74,10 @@ resource "aws_nat_gateway" "public_a" {
 }
 
 resource "aws_subnet" "public_b" {
-  cidr_block                = "10.1.2.0/24"
+  cidr_block              = "10.1.2.0/24"
   map_public_ip_on_launch = true
-  vpc_id                    = aws_vpc.main.id
-  availability_zone         = "${data.aws_region.current.name}b"
+  vpc_id                  = aws_vpc.main.id
+  availability_zone       = "${data.aws_region.current.name}b"
 
   tags = merge(
     local.common_tags,
