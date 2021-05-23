@@ -54,8 +54,9 @@ terraform_workspace_list:
 	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace list
 
 terraform_create_workspace:
-	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new dev
-	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new prod
+	-docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new dev
+	-docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new prod
+	-docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new staging
 
 terraform_change_workspace:
 	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace select ${workspace}
