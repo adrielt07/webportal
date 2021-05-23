@@ -73,6 +73,6 @@ The name of the resources will be "${var.prefix}-${terraform.workspace}-< Some r
   * ``` make terraform_apply ```
 
 **6. Destroy your change**
-  * Destroy the infrastructure. Do this if you have specified a different a different "var.prefix"
+  * Destroy the infrastructure. Do this if you have specified a different "var.prefix"
   * ``` docker-compose -f deploy/docker-compose.yml run --rm terraform destroy ```
 
