@@ -3,7 +3,7 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
-from web_portal.forms import CreateCompanyForm
+from web_portal.forms import CreateCompanyForm, UpdateCompanyForm
 from web_portal.models.company_models import CompanyModel
 from web_portal.utils.aws_s3 import S3ClientWebPortal
 
@@ -49,6 +49,51 @@ class CreateCompanyView(View):
             cleaned_data = form.cleaned_data
             context["errors"] = form.errors
             return render(request, 'web_portal/createcompany.html', {'context': context})
+
+
+class CompanyDetailedView(View):
+    """Detail view for each company"""
+    def get(self, request, company_pk):
+        access = self.validate_access(request.user, company_pk)
+
+        if access == False:
+            return redirect('list_company')
+        else:
+            company = CompanyModel.objects.get(pk=company_pk)
+            context = {
+                'title': 'Ctrl-layer Company Detail',
+                'page_title': 'Company Details',
+            }
+            return render(
+                request,
+                'web_portal/company_detail.html',
+                {'context': context, 'company': company}
+            )
+
+
+    def update(self, request, pk):
+        pass
+
+
+    @staticmethod
+    def validate_access(user_obj, company_pk):
+        """ Validates if the normal user have access to the company
+        If they don't have access, redirect them to homepage
+
+        Also, if the user has is_ctrl_admin automatically give them access 
+        
+        Arg:
+            user <user model>: current user object
+            pk   <int>: company's primary key
+
+        Return:
+            True <bool>: if the user has access
+            False <bool>: if the user doesn't have access
+        """
+        if user_obj.company.id == company_pk or user_obj.is_ctrl_admin:
+            return True
+        else:
+            return False
 
 
 class ListCompanyView(View):

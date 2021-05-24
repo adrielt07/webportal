@@ -11,4 +11,10 @@ class HomepageView(View):
             'title': 'Ctrl-layer Portal Home',
             'is_ctrl_admin': request.user.is_ctrl_admin,
         }
-        return render(request, 'web_portal/home.html', {'context': context})
+        return render(
+            request,
+            'web_portal/home.html', {
+                'context': context,
+                'company': request.user.company,
+                }
+            )

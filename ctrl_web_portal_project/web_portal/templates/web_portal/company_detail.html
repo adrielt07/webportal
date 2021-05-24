@@ -1,0 +1,54 @@
+{% extends 'web_portal/base_generic.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>{{ context.page_title }}</h1>
+					<section>
+						<form id="update_company" method="post" action="{% url 'detail_company' company_pk=company.id %}">
+							{% csrf_token %}
+							<div class="fields">
+								<div class="field">
+                                    <label>Company Name</label>
+									<input required type="text" name="company_name" id="id_company_name" value="{{ company.company_name }}"/>
+								</div>
+								<div class="field half">
+                                    <label>Address</label>
+
+									<input required type="text" name="address" id="id_address" value="{{ company.address }}"/>
+								</div>
+								<div class="field half">
+                                    <label>City</label>
+									<input type="text" name="city" id="id_city" value="{{ company.city }}"/>
+								</div>
+								<div class="field half">
+                                    <label>State</label>
+									<input type="text" name="state" id="id_state" value="{{ company.state }}"/>
+								</div>
+								<div class="field half">
+                                    <label>Zip code</label>
+									<input type="text" name="zip_code" id="id_zip_code" value="{{ company.zip_code }}" />
+								</div>
+                                <div class="field half">
+                                    <label>Country</label>
+									<input type="text" name="country" id="id_country" value="{{ company.country }}" />
+								</div>
+                                <div class="field half">
+                                    <label>Phone Number</label>
+									<input type="text" name="phone" id="id_phone" value="{{ company.phone }}" />
+								</div>
+							</div>
+							{{ context.errors }}
+							<ul class="actions">
+								<li><input type="submit" value="Update" class="primary" id="signupBtn" /></li>
+							</ul>
+						</form>
+					</section>
+			</div>
+		</div>
+
+{% endblock %}

@@ -49,3 +49,21 @@ class CreateCompanyForm(forms.ModelForm):
     class Meta:
         model = CompanyModel
         fields = ["company_name", "address", "city", "state", "zip_code", "country", "phone"]
+
+class UpdateCompanyForm(forms.ModelForm):
+    """ Update the selected company """
+    company_name = forms.CharField(max_length=1024)
+    phone = PhoneNumberField(null=False,
+        blank=False,
+        unique=True
+    )
+    address = forms.CharField(max_length=1024)
+    city = forms.CharField(max_length=1024)
+    state = forms.CharField(max_length=1024)
+    zip_code = forms.CharField(max_length=12)
+    country = forms.CharField(max_length=50)
+
+    class Meta:
+        model = CompanyModel
+        fields = ["company_name", "address", "city", "state", "zip_code", "country", "phone"]
+

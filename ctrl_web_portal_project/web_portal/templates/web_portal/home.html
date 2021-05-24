@@ -64,17 +64,6 @@
 				{% endif %}
 
 				<!-- Generic Cards for end users -->
-				<article class="style2">
-					<span class="image">
-						<img src="{% static 'web_portal/images/pic02.jpg' %}"  alt="" />
-					</span>
-					<a href="{% url 'generic' %}">
-						<h2>Decom</h2>
-						<div class="content">
-							<p>Decommisioned Asset / Decommisioned Document</p>
-						</div>
-					</a>
-				</article>
 
 				<article class="style1">
 					<span class="image">
@@ -84,6 +73,18 @@
 						<h2>Create New User</h2>
 						<div class="content">
 							<p>Create new user</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="{% url 'detail_company' company.id %}">
+						<h2>Company Detail</h2>
+						<div class="content">
+							<p>Update Company Info</p>
 						</div>
 					</a>
 				</article>
@@ -99,6 +100,7 @@
 						</div>
 					</a>
 				</article>
+
 				<article class="style4">
 					<span class="image">
 						<img src="{% static 'web_portal/images/pic04.jpg' %}" alt="" />
@@ -107,6 +109,18 @@
 						<h2>User List</h2>
 						<div class="content">
 							<p>List of users</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style2">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic02.jpg' %}"  alt="" />
+					</span>
+					<a href="{% url 'generic' %}">
+						<h2>Decom</h2>
+						<div class="content">
+							<p>Decommisioned Asset / Decommisioned Document</p>
 						</div>
 					</a>
 				</article>
