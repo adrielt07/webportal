@@ -42,12 +42,31 @@
 									<input type="text" name="phone" id="id_phone" value="{{ company.phone }}" />
 								</div>
 							</div>
-							{{ context.errors }}
-							<ul class="actions">
-								<li><input type="submit" value="Update" class="primary" id="signupBtn" /></li>
-							</ul>
 						</form>
+					<label>Accounts</label>
+					<table>
+						<tr>
+							<th>ID</th>
+							<th>Fistname</th>
+							<th>Lastname</th>
+							<th>Email</th>
+						</tr>
+						{% for obj in context.account_model %}
+						<tr>
+							<td>{{ obj.id }}</td>
+							<td>{{ obj.firstname }}</td>
+							<td>{{ obj.lastname }}</td>
+							<td>{{ obj.email }}</td>
+						</tr>
+						{% endfor %}
+					</table>
 					</section>
+
+					{{ context.errors }}
+					<ul class="actions">
+						<li><input type="submit" value="Update" class="primary" id="signupBtn" /></li>
+					</ul>
+					
 			</div>
 		</div>
 

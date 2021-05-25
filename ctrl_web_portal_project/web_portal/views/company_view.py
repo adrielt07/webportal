@@ -6,6 +6,7 @@ from django.views import View
 from web_portal.forms import CreateCompanyForm, UpdateCompanyForm
 from web_portal.models.company_models import CompanyModel
 from web_portal.utils.aws_s3 import S3ClientWebPortal
+from web_portal.models.account_models import AccountModel
 
 class CreateCompanyView(View):
     """ Only for ctrl-layer admin should have access
@@ -55,6 +56,8 @@ class CompanyDetailedView(View):
     """Detail view for each company"""
     def get(self, request, company_pk):
         access = self.validate_access(request.user, company_pk)
+        account_model = AccountModel.objects.filter(company_id=company_pk)
+
 
         if access == False:
             return redirect('list_company')
@@ -63,6 +66,7 @@ class CompanyDetailedView(View):
             context = {
                 'title': 'Ctrl-layer Company Detail',
                 'page_title': 'Company Details',
+                'account_model': account_model,
             }
             return render(
                 request,
