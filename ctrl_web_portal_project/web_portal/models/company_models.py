@@ -8,7 +8,7 @@ class CompanyModel(models.Model):
     phone = PhoneNumberField(
         null=False,
         blank=False,
-        unique=True
+        unique=False,
     )
 
     address = models.CharField(

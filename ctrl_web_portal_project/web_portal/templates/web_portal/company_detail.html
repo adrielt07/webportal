@@ -42,7 +42,13 @@
 									<input type="text" name="phone" id="id_phone" value="{{ company.phone }}" />
 								</div>
 							</div>
+
+							{{ context.errors }}
+							<ul class="actions">
+								<li><input type="submit" value="Update" class="primary" id="signupBtn" /></li>
+							</ul>
 						</form>
+
 					<label>Accounts</label>
 					<table>
 						<tr>
@@ -62,11 +68,6 @@
 					</table>
 					</section>
 
-					{{ context.errors }}
-					<ul class="actions">
-						<li><input type="submit" value="Update" class="primary" id="signupBtn" /></li>
-					</ul>
-					
 			</div>
 		</div>
 

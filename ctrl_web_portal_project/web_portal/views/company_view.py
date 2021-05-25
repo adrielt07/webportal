@@ -1,7 +1,7 @@
 import json
 
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views import View
 from web_portal.forms import CreateCompanyForm, UpdateCompanyForm
 from web_portal.models.company_models import CompanyModel
@@ -54,10 +54,13 @@ class CreateCompanyView(View):
 
 class CompanyDetailedView(View):
     """Detail view for each company"""
+    form_class = UpdateCompanyForm
+
     def get(self, request, company_pk):
+        form = self.form_class().fields
+
         access = self.validate_access(request.user, company_pk)
         account_model = AccountModel.objects.filter(company_id=company_pk)
-
 
         if access == False:
             return redirect('list_company')
@@ -75,8 +78,22 @@ class CompanyDetailedView(View):
             )
 
 
-    def update(self, request, pk):
-        pass
+    def post(self, request, company_pk):
+        company = CompanyModel.objects.get(pk=company_pk)
+        form = self.form_class(instance=company, data=request.POST)
+        context = {
+            'title': 'Ctrl-layer Company Detail',
+            'page_title': 'Company Details',
+        }
+        context['form'] = form
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('detail_company', company_pk=(company.id))
+        else:
+            return redirect('detail_company', company_pk=(company.id))
+
+
 
 
     @staticmethod
