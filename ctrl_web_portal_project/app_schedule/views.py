@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from app_schedule.forms import CreateScheduleForm
 from app_schedule.models import ScheduleModel
+from web_portal.utils.aws_s3 import S3ClientWebPortal
 
 
 class ScheduleView(View):

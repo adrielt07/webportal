@@ -9,4 +9,4 @@ class CreateScheduleForm(forms.ModelForm):
 
     class Meta:
         model = ScheduleModel
-        fields = ["schedule_date"]
+        fields = ["schedule_date", "address"]

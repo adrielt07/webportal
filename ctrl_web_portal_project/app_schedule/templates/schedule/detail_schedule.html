@@ -11,13 +11,15 @@
 				<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
                 <form>
                 <div class="form-group">
-                    <label for="schedule_id">Schedule ID:</label>
+                    <label for="schedule_id">Ref ID:</label>
                     <input disabled type="text" id="schedule_id" name="schedule_id" 
                     value="{{ schedule.id}}">
                     <label for="name">Requester:</label>
-                    <input disabled type="text" id="name" name="name" value="{{ schedule.user.firstname}} {{ schedule.user.lastname}}">
+                    <input disabled type="text" id="name" name="name" value="{{ schedule.user.firstname }} {{ schedule.user.lastname}}">
+					<label for="address">Address:</label>
+					<input disabled type="text" id="address" name="address" value="{{ schedule.address }}">
                     <label for="email">Email:</label>
-                    <input disabled type="text" id="email" name="email" value="{{ schedule.user.email}}">
+                    <input disabled type="text" id="email" name="email" value="{{ schedule.user.email }}">
                     <label for="date">Date Schedule:</label>
                     <input type="text" id="date" name="date" value="{{ schedule.schedule_date }}"><br>
                 </div>
@@ -26,25 +28,6 @@
 					{% csrf_token %}
 					<input type="submit" value="Delete Schedule">
 				</form>
-                <!-- table view just commenting this out for now
-				<table>
-					<tr>
-						<th>Date</th>
-						<th>User</th>
-						<th>Email</th>
-						<th>Ref ID</th>
-					</tr>
-					<tr>
-						<td>{{ schedule.schedule_date }}</td>
-						<td>{{ schedule.user.firstname}} {{ schedule.user.lastname }}</td>
-						<td>{{ schedule.user.email }}</td>
-						<td>{{ schedule.id }}</td>
-					</tr>
-				</table>
-                <button><a href="#">Reschedule</a></button>
-
-				<button><a href="#">Cancel</a></button>
-                -->
 			</div>
 		</div>
 

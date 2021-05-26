@@ -17,6 +17,12 @@ class ScheduleModel(models.Model):
         on_delete=models.CASCADE,
         null=True)
 
+    address = models.CharField(
+        "Address",
+        max_length=1024,
+        default=""
+    )
+
     def __str__(self):
         return f"{self.company} - {self.id}"
 

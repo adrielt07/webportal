@@ -54,7 +54,7 @@ class CreateCompanyView(View):
 
 
 class CompanyDetailedView(View):
-    """Detail view for each company"""
+    """ Detail view for each company """
     form_class = UpdateCompanyForm
 
     def get(self, request, company_pk):
@@ -93,8 +93,6 @@ class CompanyDetailedView(View):
             return redirect('detail_company', company_pk=(company.id))
         else:
             return redirect('detail_company', company_pk=(company.id))
-
-
 
 
     @staticmethod
