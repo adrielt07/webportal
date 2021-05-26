@@ -45,10 +45,11 @@ class CreateCompanyView(View):
             post.save()
             s3 = S3ClientWebPortal(post.id, post.company_name)
             s3.create_folder_in_bucket('decom')
+            s3.create_folder_in_bucket('invoice')
             return redirect('list_company')
         else:
             cleaned_data = form.cleaned_data
-            context["errors"] = form.errors
+            context['errors'] = form.errors
             return render(request, 'web_portal/createcompany.html', {'context': context})
 
 
@@ -133,7 +134,3 @@ class ListCompanyView(View):
             'company_models': company_models,
         }
         return render(request, 'web_portal/company_list.html', {'context': context})
-
-class CompanyDetailView(View):
-    """ View for ctrl-layer admins to view more details about the company"""
-    pass
