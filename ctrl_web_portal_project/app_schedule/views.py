@@ -4,6 +4,7 @@ from django.views import View
 from app_schedule.forms import CreateScheduleForm
 from app_schedule.models import ScheduleModel
 from web_portal.utils.aws_s3 import S3ClientWebPortal
+from datetime import datetime
 
 
 class ScheduleView(View):
@@ -49,9 +50,17 @@ class CreateScheduleView(View):
         }
         context['form'] = form
         if form.is_valid():
+            data = form.data
+            time = data['schedule_time']
+            date = data['schedule_date']
+
+            datetime_str = f"{date} {time}"
+            datetime_obj = datetime.strptime(datetime_str, '%Y-%m-%d %H:%M')
+
             post = form.save(commit=False)
             post.company_id = request.user.company_id
             post.user = request.user
+            post.schedule_date = datetime_obj
             post.save()
             return redirect('list_schedule')
         else:
