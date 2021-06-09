@@ -15,3 +15,7 @@ variable "db_username" {
 variable "db_password" {
   description = "Password for the RDS postgress instance"
 }
+
+variable "bastion_key_name" {
+  default = "ctrl-layer_secret_key"
+}
