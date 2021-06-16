@@ -41,7 +41,7 @@ resource "aws_db_instance" "webportal_database" {
   password                = var.db_password
   username                = var.db_username
   backup_retention_period = 0     # revisit this needs to be 7 days
-  multi_az                = false # revisit - this should be true. It creates the db in multiple az 
+  multi_az                = terraform.workspace == "prod" ? true : false
   skip_final_snapshot     = true  # When the database gets deleted, it will create a final snapshot
   vpc_security_group_ids  = [aws_security_group.rds.id]
 
