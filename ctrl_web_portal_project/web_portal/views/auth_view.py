@@ -23,15 +23,14 @@ class LoginpageView(View):
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
-        #try:
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             user = EmailAuthBackend().authenticate(request, username=email, password=password)
             if user is not None:
-                print("user is not none")
                 if user.is_active:
                     django_login(request, user)
+                    return redirect('home')
             else:
                 data = {
                     'form': form, 
@@ -41,9 +40,6 @@ class LoginpageView(View):
                 return render(request, self.template_name, data)
         else:
             return render(request, self.template_name, {'form': form})
-        #except AttributeError:
-        #    return render(request, self.template_name, {'form': form, 'error': 'Invalid Email or Password'})
-            #return redirect('/home/')
     
 
 def logout(request):
