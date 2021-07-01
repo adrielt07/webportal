@@ -38,7 +38,6 @@ class LoginpageView(View):
                     'error': 'Invalid Email or Password',
                     'email': email
                     }
-                print(data)
                 return render(request, self.template_name, data)
         else:
             return render(request, self.template_name, {'form': form})
