@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Ctrl-Layer Portal Login</title>
+		<title>Portal Login</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'web_portal/assets/css/main.css' %}" />
@@ -17,7 +17,7 @@
 				<div class="inner">
 					<!-- Logo -->
 					<a href="" class="logo">
-						<span class="symbol"><img src="{% static 'web_portal/images/triangle_logo.jpg' %}" alt="" /></span><span class="title">Ctrl-Layer</span>
+						<span class="symbol"><img src="{% static 'web_portal/images/triangle_logo.jpg' %}" alt="" /></span><span class="title">Web Portal</span>
 					</a>
 				</div>
 			</header>
@@ -25,7 +25,6 @@
 			<!-- Main -->
 			<div id="main">
 				<div class="inner">
-					<h1>Login</h1>
 					<section>
 						<form id="login_form" method="post" action="{% url 'login' %}">
 							{% csrf_token %}
@@ -63,7 +62,7 @@
 						</ul>
 					</section>
 					<ul class="copyright">
-						<li>&copy; Ctrl-layer LLC. All rights reserved</li>
+						<li>&copy; Hello World LLC. All rights reserved</li>
 					</ul>
 				</div>
 			</footer>
