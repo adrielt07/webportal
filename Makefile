@@ -20,20 +20,20 @@ build_local: ## Run application on container locally with Proxy and Debug off
 	docker-compose -f docker-compose-proxy.yml up
 
 migrations_dev: # Run migrations locally
-	./web_portal_project/manage.py makemigrations web_portal --settings=ctrl_web_portal.local_settings
-	./web_portal_project/manage.py migrate --settings=ctrl_web_portal.local_settings
+	python3 ./web_portal_project/manage.py makemigrations web_portal --settings=web_portal_settings.local_settings
+	python3 ./web_portal_project/manage.py migrate --settings=web_portal_settings.local_settings
 
 dev: ## Run application locally. No container
-	./web_portal_project/manage.py runserver --settings=ctrl_web_portal.local_settings
+	python3 ./web_portal_project/manage.py runserver --settings=web_portal_settings.local_settings 0.0.0.0:8000
 
 createsuperuser:
-	./web_portal_project/manage.py createsuperuser --settings=ctrl_web_portal.local_settings
+	./web_portal_project/manage.py createsuperuser --settings=web_portal_settings.local_settings
 
 dev_test:
-	cd ./web_portal_project/ && python3 manage.py test --settings=ctrl_web_portal.local_settings
+	cd ./web_portal_project/ && python3 manage.py test --settings=web_portal_settings.local_settings
 
 shell:
-	./web_portal_project/manage.py shell --settings=ctrl_web_portal.local_settings
+	./web_portal_project/manage.py shell --settings=web_portal_settings.local_settings
 
 terraform_init:
 	docker-compose -f deploy/docker-compose.yml run --rm terraform init
@@ -60,3 +60,6 @@ terraform_create_workspace:
 
 terraform_change_workspace:
 	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace select ${workspace}
+
+docker_run:
+	docker run --rm -it -p 0.0.0.0:8000:8000/tcp  -v ${PWD}:/project adrielt07/ubuntu18:latest /bin/bash

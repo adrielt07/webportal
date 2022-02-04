@@ -65,12 +65,12 @@ MIDDLEWARE = [
     'web_portal.middleware.CtrlLayerURLAccessMiddleware',
 ]
 
-ROOT_URLCONF = 'ctrl_web_portal.urls'
+ROOT_URLCONF = 'web_portal_settings.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["{}/ctrl_web_portal/templates".format(BASE_DIR)],
+        'DIRS': ["{}/web_portal/templates".format(BASE_DIR)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ctrl_web_portal.wsgi.application'
+WSGI_APPLICATION = 'web_portal_settings.wsgi.application'
 
 
 # Database
