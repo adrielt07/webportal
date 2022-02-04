@@ -1,0 +1,143 @@
+{% extends 'web_portal/base_generic.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+			<header>
+				<h1>Company Web Portal</h1>
+				<h3>Welcome {{ context.firstname }} {{ context.lastname }}</h3>
+			</header>
+			<section class="tiles">
+				{% if context.is_ctrl_admin or context.is_client_admin %}
+				<!-- Admin cards for CTRL-layer -->
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="{% url 'list_company' %}">
+						<h2>Manage Company</h2>
+						<div class="content">
+							<p>List all companies</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="#None">
+						<h2>Dev Admin</h2>
+						<div class="content">
+							<p>Use to manage everything</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="#None">
+						<h2>Create New Company</h2>
+						<div class="content">
+							<p>Create New Company</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="#None">
+						<h2>Managed all Accounts</h2>
+						<div class="content">
+							<p>Create New Company</p>
+						</div>
+					</a>
+				</article>
+				{% endif %}
+
+				<!-- Generic Cards for end users -->
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="{% url 'create_user' %}">
+						<h2>Create New User</h2>
+						<div class="content">
+							<p>Create new user</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic01.jpg' %}" alt="" />
+					</span>
+					<a href="{% url 'detail_company' company.id %}">
+						<h2>Company Detail</h2>
+						<div class="content">
+							<p>Update Company Info</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style3">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic03.jpg' %}" alt="" />
+					</span>
+					<a href="{% url 'generic' %}">
+						<h2>Contact Us</h2>
+						<div class="content">
+							<p>Create a ticket or report an issue</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style4">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic04.jpg' %}" alt="" />
+					</span>
+					<a href="{% url 'userslist' %}">
+						<h2>User List</h2>
+						<div class="content">
+							<p>List of users</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style2">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic02.jpg' %}"  alt="" />
+					</span>
+					<a href="{% url 'generic' %}">
+						<h2>Decommissioned Data</h2>
+						<div class="content">
+							<p>Decommissioned Asset / Decommissioned Document</p>
+						</div>
+					</a>
+				</article>
+
+				<article class="style7">
+					<span class="image">
+						<img src="{% static 'web_portal/images/pic02.jpg' %}"  alt="" />
+					</span>
+					<a href="{% url 'list_schedule' %}">
+						<h2>Schedule a decom pickup</h2>
+						<div class="content">
+							<p>Create a request for pickup</p>
+						</div>
+					</a>
+				</article>
+			</section>
+		</div>
+	</div>
+
+{% endblock %}

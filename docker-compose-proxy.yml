@@ -2,11 +2,11 @@ version: '3.7'
 
 services:
   app:
-    image: mmantectrllayer/web_portal:latest
+    image: adrielt07/web_portal:latest
     #build:
     #  context: .
     volumes:
-      - ./ctrl_web_portal_project:/ctrl_web_portal
+      - ./web_portal_project:/web_portal_project
       - static_data:/vol/web
     environment:
       - DB_HOST=db
@@ -19,7 +19,7 @@ services:
       - db
 
   proxy:
-    image: mmantectrllayer/proxy:latest
+    image: adrielt07/proxy:latest
     depends_on:
       - app
     ports:
