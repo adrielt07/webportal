@@ -27,13 +27,13 @@ dev: ## Run application locally. No container
 	python3 ./web_portal_project/manage.py runserver --settings=web_portal_settings.local_settings 0.0.0.0:8000
 
 createsuperuser:
-	./web_portal_project/manage.py createsuperuser --settings=web_portal_settings.local_settings
+	python3 ./web_portal_project/manage.py createsuperuser --settings=web_portal_settings.local_settings
 
 dev_test:
 	cd ./web_portal_project/ && python3 manage.py test --settings=web_portal_settings.local_settings
 
 shell:
-	./web_portal_project/manage.py shell --settings=web_portal_settings.local_settings
+	python3 ./web_portal_project/manage.py shell --settings=web_portal_settings.local_settings
 
 terraform_init:
 	docker-compose -f deploy/docker-compose.yml run --rm terraform init
