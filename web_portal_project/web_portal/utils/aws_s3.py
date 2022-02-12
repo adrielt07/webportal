@@ -19,7 +19,6 @@ class S3ClientWebPortal:
         self._s3_resource = boto3.resource('s3')
         
 
-
     def list_buckets(self):
         """ List all buckets """
         print('Existing buckets:')
