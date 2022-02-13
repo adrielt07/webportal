@@ -99,3 +99,9 @@ class AccountDetail(APIView):
         snippet = self.get_object(pk)
         serializer = AccountDetailSerializer(snippet)
         return Response(serializer.data)
+
+
+    def delete(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        snippet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
