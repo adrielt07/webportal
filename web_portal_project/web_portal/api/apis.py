@@ -43,14 +43,13 @@ class CompanyDetail(APIView):
 
 
     def get(self, request, pk, format=None):
-        snippet = self.get_object(pk)
-        serializer = CompanyDetailSerializer(snippet)
+        company = self.get_object(pk)
+        serializer = CompanyDetailSerializer(company)
         return Response(serializer.data)
 
     def post(self, request):
         company_data = CompanyModel.objects.all()
         serializer = CompanyModelSerializer(data=request.data)
-        print(request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -86,7 +85,7 @@ class LocationModelViewSet(APIView):
 
 class AccountDetail(APIView):
     """
-    Retrieve, update or delete a snippet instance.
+    Retrieve, update or delete a account instance.
     """
     def get_object(self, pk):
         try:
@@ -96,15 +95,15 @@ class AccountDetail(APIView):
 
 
     def get(self, request, pk, format=None):
-        snippet = self.get_object(pk)
-        serializer = AccountDetailSerializer(snippet)
+        account = self.get_object(pk)
+        serializer = AccountDetailSerializer(account)
         return Response(serializer.data)
 
 
     def delete(self, request, pk, format=None):
-        snippet = self.get_object(pk)
+        account = self.get_object(pk)
         user = request.user
-        if user.is_client_admin:
-            snippet.delete()
+        if user.is_client_admin and user.company.id == user.company.id:
+            account.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         return Response(status=status.HTTP_403_FORBIDDEN)
