@@ -103,6 +103,9 @@ class AccountDetail(APIView):
     def delete(self, request, pk, format=None):
         account = self.get_object(pk)
         user = request.user
+        if user.id == account.id:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+
         if user.is_client_admin and user.company.id == user.company.id:
             account.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
