@@ -91,7 +91,7 @@ class AccountDetail(APIView):
     def get_object(self, pk):
         try:
             return AccountModel.objects.get(pk=pk)
-        except Snippet.DoesNotExist:
+        except AccountModel.DoesNotExist:
             raise Http404
 
 
@@ -103,5 +103,8 @@ class AccountDetail(APIView):
 
     def delete(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        snippet.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        user = request.user
+        if user.is_client_admin:
+            snippet.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_403_FORBIDDEN)
