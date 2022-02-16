@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from web_portal.models.account_models import AccountModel
 from web_portal.models.company_models import CompanyModel
 from web_portal.models.location_models import LocationModel
@@ -59,7 +59,7 @@ class CompanyDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     
-    def update(self, request, pk):
+    def patch(self, request, pk):
         user = request.user.id
         payload = json.loads(request.body)
         company_item = CompanyModel.objects.filter(id=pk)
