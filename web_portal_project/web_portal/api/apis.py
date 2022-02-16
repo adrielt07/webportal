@@ -15,6 +15,8 @@ from web_portal.serializers import (
     LocationModelSerializer,
 )
 
+import json
+
 
 class CompanyModelViewSet(APIView):
     #permission_classes = (IsAuthenticated,)
@@ -47,6 +49,7 @@ class CompanyDetail(APIView):
         serializer = CompanyDetailSerializer(company)
         return Response(serializer.data)
 
+
     def post(self, request):
         company_data = CompanyModel.objects.all()
         serializer = CompanyModelSerializer(data=request.data)
@@ -54,6 +57,16 @@ class CompanyDetail(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    
+    def update(self, request, pk):
+        user = request.user.id
+        payload = json.loads(request.body)
+        company_item = CompanyModel.objects.filter(id=pk)
+        company_item.update(**payload)
+        company = CompanyModel.objects.get(id=pk)
+        serializer = CompanyModelSerializer(company)
+        return JsonResponse({'company': serializer.data}, safe=False, status=status.HTTP_200_OK)
 
 
 class CreateUserView(generics.CreateAPIView):
