@@ -8,7 +8,7 @@ class HomepageView(View):
         context = {
             'firstname': request.user.firstname,
             'lastname': request.user.lastname,
-            'title': 'Ctrl-layer Portal Home',
+            'title': request.user.company.company_name,
             'is_ctrl_admin': request.user.is_ctrl_admin,
         }
         return render(
