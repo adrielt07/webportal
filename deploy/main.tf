@@ -1,10 +1,10 @@
 terraform {
   backend "s3" {
-    bucket         = "ctrl-layer-web-portal-terraform-state"
+    bucket         = "web-portal-terraform-tfstate" # must be unique. Change this to match with your AWS bucket
     key            = "web_portal.tfstate"
     region         = "us-west-1"
     encrypt        = true
-    dynamodb_table = "ctrl-layer-web-portal-terraform-lock"
+    dynamodb_table = "web-portal-terraform-lock"
   }
 }
 
