@@ -40,9 +40,9 @@ resource "aws_db_instance" "webportal_database" {
   db_subnet_group_name    = aws_db_subnet_group.main.name
   password                = var.db_password
   username                = var.db_username
-  backup_retention_period = 0     # revisit this needs to be 7 days
+  backup_retention_period = 0 # revisit this needs to be 7 days
   multi_az                = terraform.workspace == "prod" ? true : false
-  skip_final_snapshot     = true  # When the database gets deleted, it will create a final snapshot
+  skip_final_snapshot     = true # When the database gets deleted, it will create a final snapshot
   vpc_security_group_ids  = [aws_security_group.rds.id]
 
   tags = merge(
