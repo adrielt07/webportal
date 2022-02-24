@@ -5,14 +5,14 @@ resource "aws_ecs_cluster" "main" {
 }
 
 resource "aws_iam_policy" "task_execution_role_policy" {
-  name = "${local.prefix}-task-exec-role-policy"
-  path = "/"
+  name        = "${local.prefix}-task-exec-role-policy"
+  path        = "/"
   description = "Allow retrieving of images/files and adding to logs"
-  policy = file("./templates/ecs/task-exec-role.json")
+  policy      = file("./templates/ecs/task-exec-role.json")
 }
 
 resource "aws_iam_role" "task_execution_role" {
-  name = "${local.prefix}-task-exec-role"
+  name               = "${local.prefix}-task-exec-role"
   assume_role_policy = file("./templates/ecs/assume-role-policy.json")
 }
 

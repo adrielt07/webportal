@@ -4,7 +4,7 @@ terraform {
     key            = "web_portal.tfstate"
     region         = "us-west-1"
     encrypt        = true
-    dynamodb_table = "web-portal-terraform-lock"
+    dynamodb_table = "web-portal-terraform-state-lock"
   }
 }
 
