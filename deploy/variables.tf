@@ -1,11 +1,11 @@
 variable "prefix" {}
 
 variable "project" {
-  default = "ctrl-layer-web-portal"
+  default = "web-portal"
 }
 
 variable "contact" {
-  default = "atolentino@ctrl-layer.com"
+  default = "adriel_tolentino@outlook.com"
 }
 
 variable "db_username" {
@@ -17,5 +17,5 @@ variable "db_password" {
 }
 
 variable "bastion_key_name" {
-  default = "ctrl-layer_secret_key"
+  default = "web_portal_bastion_secret_key"
 }
