@@ -9,7 +9,7 @@ from web_portal.utils.aws_s3 import S3ClientWebPortal
 from web_portal.models.account_models import AccountModel
 
 class CreateCompanyView(View):
-    """ Only for ctrl-layer admin should have access
+    """ Only for admin should have access
 
     Form to create a new company
     """
@@ -22,7 +22,7 @@ class CreateCompanyView(View):
         """
         form = self.form_class().fields
         context = {
-            'title': 'Ctrl-layer Create Company'
+            'title': 'Create Company (Admin Only)'
         }
         context['form'] = form
         return render(request, 'web_portal/createcompany.html', {'context': context})
@@ -35,7 +35,7 @@ class CreateCompanyView(View):
         """
         form = self.form_class(request.POST)
         context = {
-            'title': 'Ctrl-layer Create Company'
+            'title': 'Create Company (Admin Only)'
         }
         context['form'] = form
         if form.is_valid():
@@ -68,7 +68,7 @@ class CompanyDetailedView(View):
         else:
             company = CompanyModel.objects.get(pk=company_pk)
             context = {
-                'title': 'Ctrl-layer Company Detail',
+                'title': 'Company Detail',
                 'page_title': 'Company Details',
                 'account_model': account_model,
             }
@@ -83,7 +83,7 @@ class CompanyDetailedView(View):
         company = CompanyModel.objects.get(pk=company_pk)
         form = self.form_class(instance=company, data=request.POST)
         context = {
-            'title': 'Ctrl-layer Company Detail',
+            'title': 'Company Detail',
             'page_title': 'Company Details',
         }
         context['form'] = form
@@ -100,7 +100,7 @@ class CompanyDetailedView(View):
         """ Validates if the normal user have access to the company
         If they don't have access, redirect them to homepage
 
-        Also, if the user has is_ctrl_admin automatically give them access 
+        Also, if the user has is_super_admin automatically give them access 
         
         Arg:
             user <user model>: current user object
@@ -110,7 +110,7 @@ class CompanyDetailedView(View):
             True <bool>: if the user has access
             False <bool>: if the user doesn't have access
         """
-        if user_obj.company.id == company_pk or user_obj.is_ctrl_admin:
+        if user_obj.company.id == company_pk or user_obj.is_super_admin:
             return True
         else:
             return False
@@ -118,7 +118,7 @@ class CompanyDetailedView(View):
 
 class ListCompanyView(View):
     """ 
-    ONLY for Ctrl-layer admins
+    ONLY for is_super_admin admins
     
     View all existing companies and their information
     """
@@ -127,8 +127,8 @@ class ListCompanyView(View):
         context = {
             'firstname': request.user.firstname,
             'lastname': request.user.lastname,
-            'title': 'Ctrl-layer Company List',
-            'page_title': 'All Companies',
+            'title': 'Company List',
+            'page_title': 'Company List',
             'company_models': company_models,
         }
         return render(request, 'web_portal/company_list.html', {'context': context})

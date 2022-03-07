@@ -12,7 +12,7 @@
 				<h3>Welcome {{ context.firstname }} {{ context.lastname }}</h3>
 			</header>
 			<section class="tiles">
-				{% if context.is_ctrl_admin or context.is_client_admin %}
+				{% if context.is_super_admin or context.is_client_admin %}
 				<!-- Admin cards for CTRL-layer -->
 				<article class="style1">
 					<span class="image">

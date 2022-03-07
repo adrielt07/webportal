@@ -1,77 +1,42 @@
+{% extends 'web_portal/base_generic.html' %}
+
 {% load static %}
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title> {{ context.title }} </title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{% static 'web_portal/assets/css/main.css' %}" />
-		<noscript><link rel="stylesheet" href="{% static 'web_portal/assets/css/noscript.css' %}" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-		<div id="wrapper">
-			<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<!-- Logo -->
-					<a href="index.html" class="logo">
-						<span class="symbol"><img src="{% static 'web_portal/images/triangle_logo.jpg' %}" alt="" /></span><span class="title">Ctrl-Layer</span>
-					</a>
-				</div>
-			</header>
 
-			<!-- Main -->
-			<div id="main">
-				<div class="inner">
-					<h1>Create New Account</h1>
+{% block content %}
 
-					<!-- Signup Form -->
-					<section>
-						<form id="signup_form" method="post" action="{% url 'create_user' %}">
-							{% csrf_token %}
-							<div class="fields">
-								<div class="field">
-									<input required type="email" name="email" id="id_email" placeholder="Email"/>
-								</div>
-								<div class="field half">
-									<input required type="text" name="firstname" id="id_firstname" placeholder="First Name"/>
-								</div>
-								<div class="field half">
-									<input required type="text" name="lastname" id="id_lastname" placeholder="Last Name"/>
-								</div>
-								<div class="field half">
-									<input class="password_field" required type="password" name="password1" id="id_password1" placeholder="Password"/>
-								</div>
-								<div class="field half">
-									<input class="password_field" required type="password" name="password2" id="id_password2" placeholder="Confirm Password" />
-								</div>
-							</div>
-							{{ context.errors }}
-							<ul class="actions">
-								<li><input type="submit" value="Create" class="primary" id="signupBtn"  disabled/></li>
-							</ul>
-						</form>
-					</section>
-				</div>
-			</div>
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+			<h1>{{ context.page_title }}</h1>
 
-			<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="copyright">
-						<li>&copy; Ctrl-layer. All rights reserved</li>
+			<!-- Signup Form -->
+			<section>
+				<form id="signup_form" method="post" action="{% url 'create_user' %}">
+					{% csrf_token %}
+					<div class="fields">
+						<div class="field">
+							<input required type="email" name="email" id="id_email" placeholder="Email"/>
+						</div>
+						<div class="field half">
+							<input required type="text" name="firstname" id="id_firstname" placeholder="First Name"/>
+						</div>
+						<div class="field half">
+							<input required type="text" name="lastname" id="id_lastname" placeholder="Last Name"/>
+						</div>
+						<div class="field half">
+							<input class="password_field" required type="password" name="password1" id="id_password1" placeholder="Password"/>
+						</div>
+						<div class="field half">
+							<input class="password_field" required type="password" name="password2" id="id_password2" placeholder="Confirm Password" />
+						</div>
+					</div>
+					{{ context.errors }}
+					<ul class="actions">
+						<li><input type="submit" value="Create" class="primary" id="signupBtn"  disabled/></li>
 					</ul>
-				</div>
-			</footer>
+				</form>
+			</section>
 		</div>
+	</div>
 
-		<!-- Scripts -->
-		<script src="{% static 'web_portal/assets/js/password-signup.js' %}"></script>
-		<script src="{% static 'web_portal/assets/js/jquery.min.js' %}"></script>
-		<script src="{% static 'web_portal/assets/js/browser.min.js' %}"></script>
-		<script src="{% static 'web_portal/assets/js/breakpoints.min.js' %}"></script>
-		<script src="{% static 'web_portal/assets/js/util.js' %}"></script>
-		<script src="{% static 'web_portal/assets/js/main.js' %}"></script>
-	</body>
-</html>
+{% endblock %}

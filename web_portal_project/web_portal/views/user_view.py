@@ -10,7 +10,7 @@ class UserlistView(View):
         context = {
             'firstname': request.user.firstname,
             'lastname': request.user.lastname,
-            'title': 'Ctrl-layer Portal Home',
+            'title': 'User list',
             'page_title': 'User list',
             'account_model': account_model,
         }

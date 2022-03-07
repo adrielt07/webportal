@@ -15,7 +15,9 @@ class SignupView(View):
         """
         form = self.form_class().fields
         context = {
-            'title': 'Ctrl-layer Portal Signup'
+            'title': 'Portal Signup',
+            'page_title': 'Portal Signup',
+            
         }
         context['form'] = form
         return render(request, 'web_portal/signup.html', context)
@@ -41,7 +43,8 @@ class SignupView(View):
         """
         form = self.form_class(request.POST)
         context = {
-            'title': 'Ctrl-layer Portal Signup'
+            'title': 'Portal Signup',
+            'page_title': 'Portal Signup',
         }
         context['form'] = form
         if form.is_valid():

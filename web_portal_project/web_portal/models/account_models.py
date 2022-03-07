@@ -19,7 +19,7 @@ class UserManager(BaseUserManager):
     def create_superuser(self, email, password, **extra_fields):
         """Creates and saves a new super user"""
         extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_ctrl_admin', True)
+        extra_fields.setdefault('is_super_admin', True)
         extra_fields.setdefault('is_client_admin', True)
         extra_fields.setdefault('is_superuser', True)
         user = self.create_user(email, password, **extra_fields)
@@ -51,7 +51,7 @@ class AccountModel(AbstractBaseUser, PermissionsMixin):
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    is_ctrl_admin = models.BooleanField(default=False)
+    is_super_admin = models.BooleanField(default=False)
     is_client_admin = models.BooleanField(default=False)
 
 

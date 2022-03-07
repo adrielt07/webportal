@@ -9,7 +9,7 @@ class HomepageView(View):
             'firstname': request.user.firstname,
             'lastname': request.user.lastname,
             'title': request.user.company.company_name,
-            'is_ctrl_admin': request.user.is_ctrl_admin,
+            'is_super_admin': request.user.is_super_admin,
         }
         return render(
             request,

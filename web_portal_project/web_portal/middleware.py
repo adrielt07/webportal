@@ -31,7 +31,7 @@ class LoginRequiredMiddleware:
 
 
 class CtrlLayerURLAccessMiddleware:
-    """ User that doesn't have is_ctrl_admin will be redirected to the
+    """ User that doesn't have is_super_admin will be redirected to the
     home page when trying to access:
 
     settings.CTRL_ADMIN_EXEMPT_URL in the settings
@@ -46,6 +46,6 @@ class CtrlLayerURLAccessMiddleware:
     def process_view(self, request, view_func, view_args, view_kwargs):
         assert hasattr(request, 'user')
         path = request.path_info
-        if request.user.is_authenticated and not request.user.is_ctrl_admin:
+        if request.user.is_authenticated and not request.user.is_super_admin:
             if any(url.match(path) for url in CTRL_EXEMPT_URL):
                 return redirect('/home/')
