@@ -32,7 +32,7 @@ class CreateScheduleView(View):
         context = {
             'firstname': request.user.firstname,
             'lastname': request.user.lastname,
-            'title': 'Ctrl-layer Schedule Create',
+            'title': 'Schedule Create',
             'page_title': 'Schedule List',
             'schedules': schedules,
         }
@@ -77,7 +77,7 @@ class DetailScheduleView(View):
         context = {
             'firstname': request.user.firstname,
             'lastname': request.user.lastname,
-            'title': 'Ctrl-layer Schedule Detail',
+            'title': 'Schedule Detail',
             'page_title': 'Schedule Details',
         }
         return render(request, 'schedule/detail_schedule.html', {'context': context, 'schedule': schedule})
@@ -88,7 +88,7 @@ class DetailScheduleView(View):
         context = {
             'firstname': request.user.firstname,
             'lastname': request.user.lastname,
-            'title': 'Ctrl-layer Schedule Detail',
+            'title': 'Schedule Detail',
             'page_title': 'Schedule Details',
         }
         schedule.delete()
