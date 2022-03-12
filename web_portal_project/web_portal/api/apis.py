@@ -89,6 +89,7 @@ class AccountModelViewSet(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class LocationModelViewSet(APIView):
     def get(self, request, format=None):
         locations = LocationModel.objects.all()
@@ -123,3 +124,13 @@ class AccountDetail(APIView):
             account.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         return Response(status=status.HTTP_403_FORBIDDEN)
+
+
+    def patch(self, request, pk):
+        user = request.user.id
+        payload = json.loads(request.body)
+        account_item = AccountModel.objects.filter(id=pk)
+        account_item.update(**payload)
+        account = AccountModel.objects.get(id=pk)
+        serializer = AccountModelSerializer(account)
+        return JsonResponse({'account': serializer.data}, safe=False, status=status.HTTP_200_OK)

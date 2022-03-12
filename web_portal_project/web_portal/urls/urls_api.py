@@ -14,8 +14,8 @@ urlpatterns = [
     path('v1/', include(router.urls)),
     path('company/', apis.CompanyModelViewSet.as_view(), name='company'),
     path('company/<int:pk>', apis.CompanyDetail.as_view(), name='company_detail'),
-    path('users/', apis.AccountModelViewSet.as_view(), name='users'),
-    path('users/<int:pk>/', apis.AccountDetail.as_view(), name='users_detail'),
+    path('accounts/', apis.AccountModelViewSet.as_view(), name='accounts'),
+    path('accounts/<int:pk>/', apis.AccountDetail.as_view(), name='account_detail'),
     path('locations/', apis.LocationModelViewSet.as_view(), name='locations'),
     path('create/', apis.CreateUserView.as_view(), name='create'),
 ]
