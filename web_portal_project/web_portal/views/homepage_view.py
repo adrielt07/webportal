@@ -13,8 +13,6 @@ class HomepageView(View):
         }
         return render(
             request,
-            'web_portal/home.html', {
-                'context': context,
-                'company': request.user.company,
-                }
-            )
+            'web_portal/home.html',
+            {'context': context, 'company': request.user.company},
+        )

@@ -64,7 +64,7 @@ class CompanyDetailedView(View):
         account_model = AccountModel.objects.filter(company_id=company_pk)
 
         if access == False:
-            return redirect('list_company')
+            return redirect('home')
         else:
             company = CompanyModel.objects.get(pk=company_pk)
             context = {
@@ -131,4 +131,12 @@ class ListCompanyView(View):
             'page_title': 'Company List',
             'company_models': company_models,
         }
-        return render(request, 'web_portal/company_list.html', {'context': context})
+
+        if request.user.is_super_admin:
+            return render(
+                request,
+                'web_portal/company_list.html',
+                {'context': context}
+            )
+        else:
+            return redirect('home')
