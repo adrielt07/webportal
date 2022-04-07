@@ -1,7 +1,7 @@
 [
     {
         "name": "webportal",
-        "image": "${docker_webportal_image}",
+        "image": "adrielt07/web_portal:latest",
         "essential": true,
         "memoryReservation": 256,
         "environment": [
@@ -35,8 +35,8 @@
         ]
     },
     {
-        "name": "webportal_proxy",
-        "image": "${docker_proxy_image}",
+        "name": "proxy",
+        "image": "adrielt07/proxy:latest",
         "essential": true,
         "portMappings": [
             {

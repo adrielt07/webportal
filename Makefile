@@ -50,6 +50,10 @@ terraform_validate:
 terraform_fmt:
 	docker-compose -f deploy/docker-compose.yml run --rm terraform fmt
 
+terraform_destroy:
+	docker-compose -f deploy/docker-compose.yml run --rm terraform destroy
+
+
 terraform_workspace_list:
 	docker-compose -f deploy/docker-compose.yml run --rm terraform workspace list
 
