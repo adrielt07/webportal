@@ -1,3 +1,4 @@
+from urllib import parse
 from rest_framework import viewsets, status, response, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -74,9 +75,12 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class = AccountModelSerializer
 
 class AccountModelViewSet(APIView):
-    serializer_class = AccountModelSerializer
-    def get(self, request, format=None):
-        user_accounts = AccountModel.objects.all()
+    serializer_class = AccountModelSerializer     
+
+    def get(self, request):
+        query = request.query_params
+        filter_data = {key: value for key, value in query.items()}
+        user_accounts = AccountModel.objects.filter(**filter_data)
         serializer = AccountModelSerializer(user_accounts, many=True)
         return Response(serializer.data)
 
