@@ -3,6 +3,7 @@ from rest_framework import viewsets, status, response, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from django.http import Http404, JsonResponse
 from web_portal.models.account_models import AccountModel
@@ -15,7 +16,6 @@ from web_portal.serializers import (
     AccountDetailSerializer,
     LocationModelSerializer,
 )
-
 import json
 
 
@@ -74,15 +74,23 @@ class CreateUserView(generics.CreateAPIView):
     """Api to create user"""
     serializer_class = AccountModelSerializer
 
-class AccountModelViewSet(APIView):
+
+class AccountModelViewSet(APIView, PageNumberPagination):
     serializer_class = AccountModelSerializer     
+    page_size = 10
+    max_page_size = 10
+
+    def get_queryset(self):
+        filter_data = {key: value for key, value in self.query.items()}
+        user_accounts = AccountModel.objects.filter(**filter_data)
+        return self.paginate_queryset(user_accounts, self.request)
+
 
     def get(self, request):
-        query = request.query_params
-        filter_data = {key: value for key, value in query.items()}
-        user_accounts = AccountModel.objects.filter(**filter_data)
+        self.query = request.query_params
+        user_accounts = self.get_queryset()
         serializer = AccountModelSerializer(user_accounts, many=True)
-        return Response(serializer.data)
+        return self.get_paginated_response(serializer.data)
 
 
     def post(self, request):
