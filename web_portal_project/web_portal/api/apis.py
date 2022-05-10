@@ -82,8 +82,11 @@ class AccountModelViewSet(APIView, PageNumberPagination):
 
     def get_queryset(self):
         filter_data = {key: value for key, value in self.query.items()}
-        user_accounts = AccountModel.objects.filter(**filter_data)
-        return self.paginate_queryset(user_accounts, self.request)
+        try:
+            user_accounts = AccountModel.objects.filter(**filter_data)
+            return self.paginate_queryset(user_accounts, self.request)
+        except:
+            raise Http404
 
 
     def get(self, request):
