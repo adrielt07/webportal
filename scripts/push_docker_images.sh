@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-docker push mmantectrllayer/web_portal:latest
-docker push mmantectrllayer/proxy:latest
+docker push adrielt07/web_portal:v1
+docker push adrielt07/proxy:v1

@@ -9,7 +9,7 @@
 		<div class="inner">
 			<header>
 				<h1>Web Portal</h1>
-				<h3>Welcome {{ context.firstname }} {{ context.lastname }}</h3>
+				<h3>Hello {{ context.firstname }} {{ context.lastname }}</h3>
 			</header>
 			<section class="tiles">
 				{% if context.is_super_admin or context.is_client_admin %}
