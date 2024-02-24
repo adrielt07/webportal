@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   app:
-    image: adrielt07/web_portal:v1
+    image: adrielt07/web_portal:v4
     #build:
     #  context: .
     volumes:
@@ -19,7 +19,7 @@ services:
       - db
 
   proxy:
-    image: adrielt07/proxy:v1
+    image: adrielt07/proxy:v2
     depends_on:
       - app
     ports:

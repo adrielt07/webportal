@@ -17,7 +17,7 @@ venv:
 	@echo ""
 
 build_local: ## Run application on container locally with Proxy and Debug off
-	docker-compose -f docker-compose-proxy.yml up
+	docker compose -f docker-compose-proxy.yml up
 
 migrations_dev: # Run migrations locally
 	python3 ./web_portal_project/manage.py makemigrations web_portal --settings=web_portal_settings.local_settings
