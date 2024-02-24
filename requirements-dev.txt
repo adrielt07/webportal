@@ -5,6 +5,7 @@ django-countries==7.0
 django-filter==2.4.0
 django-phonenumber-field==5.0.0
 djangorestframework==3.11.0
+importlib-metadata==4.13.0
 Markdown==3.3.3
 phonenumbers==8.12.17
 pytz==2021.1

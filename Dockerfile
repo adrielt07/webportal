@@ -13,9 +13,9 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 RUN pip install -r /requirements.txt
 RUN apk del .tmp-build-deps
 
-RUN mkdir /web_portal
-WORKDIR /web_portal
-COPY ./web_portal_project /web_portal
+RUN mkdir /web_portal_project
+WORKDIR /web_portal_project
+COPY ./web_portal_project /web_portal_project
 COPY ./scripts/ /scripts/
 RUN chmod +x /scripts/*
 
